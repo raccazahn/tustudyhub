@@ -1,30 +1,7 @@
-# User Interview Guide and Findings
+## Interview Documentation Status
 
-The concept paper requires interviews with at least **five classmates** about how they currently find and share past papers. Do not invent answers; record actual findings without unnecessary personal details.
+The team reports that verbal interviews were conducted with at least five classmates during the requirements-gathering period. However, responses were not recorded at the time of the conversations, so a complete, evidence-based findings summary is not currently available.
 
-## Questions
-1. Where do you currently find past papers or course materials?
-2. What problems arise when searching by course, year or exam type?
-3. How do you decide whether a paper is complete, readable and trustworthy?
-4. What device and internet connection do you use?
-5. What would make you upload or report a document?
-6. Would course MCQ quizzes help? What results should be shown?
-7. What should the public verification page display?
-8. What privacy/copyright concerns should the platform respect?
+The team will not fabricate participant responses or present unverified recollections as recorded findings. The existing requirements remain the working baseline derived from the project concept and documented design work. Interview-based findings and any resulting requirement changes remain unverified pending an appropriate recovery or validation process.
 
-## Record for each interview
-- Anonymous participant label and date:
-- Current way of finding materials:
-- Main difficulties:
-- Device/connectivity constraints:
-- Desired features:
-- Trust/privacy concerns:
-- Design implication:
-- Interviewer:
-
-## Synthesis after five or more interviews
-- Common patterns:
-- Conflicting needs:
-- Requirements supported by evidence:
-- Proposed backlog changes:
-- Open questions:
+**Status:** Interviews reported as completed; findings documentation incomplete.
