@@ -1,24 +1,35 @@
 # Team Roles and Individual Task Plan
 
-The concept paper lists ten roles. Merge roles if the team is smaller, but assign every student a primary role and traceable deliverables.
+The current team consists of nine members. Each member has a proposed primary role and a traceable first deliverable. Assignments should be confirmed by the team. If additional members join, responsibilities will be reviewed and redistributed as necessary.
 
 | Role | Responsibility | Member | First deliverable | Status |
 |---|---|---|---|---|
-| PO / Project Lead | Charter, backlog, requirements, user stories, promotion strategy | To assign | Charter/backlog/requirements | Pending |
-| ARCH / System Architect | Constraints, tech shortlist, architecture diagram, SDD | To assign | Architecture diagram | Pending |
-| API Designer | Resource list, OpenAPI v1, public API docs | To assign | API resource draft | Pending |
-| ID / Backend Identity | Registration, login, roles, permissions | To assign | Module breakdown | Pending |
-| CORE / Backend Core | Papers, verification, quizzes | To assign | Module breakdown | Pending |
-| DB / Database Engineer | Entity list, ERD, migrations, indexes, backups | To assign | Entity inventory | Pending |
-| UX / Frontend | Interviews, wireframes, mobile PWA | To assign | Interview plan/findings | Pending |
-| SEC / Security & Privacy | Threat list/model and security review | To assign | Initial threat list | Pending |
-| QA / Test | Test strategy, plan, end-to-end tests and final report | To assign | Test strategy | Pending |
-| OPS / DevOps & Documentation | Repo/docs, domain/VPS, deployment docs | To assign | Repo and infra research | Pending |
+| PO / Project Lead | Charter, backlog, requirements, coordination and progress tracking | `fraccazahnmie` | Requirements review and prioritized backlog | Proposed |
+| ARCH / System Architect | Architecture diagram, system structure and System Design Document | Member 2 — GitHub username to confirm | Reviewed architecture diagram | Proposed |
+| API Designer | REST API resources, endpoint contracts and OpenAPI documentation | `fredtuopay632-svg` | API endpoint and request/response draft | Proposed |
+| ID / Backend Identity | Registration, login, roles and permissions | Regstopher Jarsor — GitHub username to confirm | Authentication and permissions breakdown | Proposed |
+| CORE / Backend Core | Papers, verification, revocation and quizzes | `josephbnyeplu-cyber` | Core workflow breakdown | Proposed |
+| DB / Database Engineer | Entities, ERD, migrations, indexes and backup design | `madisonjuah1-hue` | Entity inventory and ERD | Proposed |
+| UX / Frontend | Wireframes, mobile PWA and interface planning | `odascosallison-glitch` | Initial wireframes and PWA plan | Proposed |
+| SEC / Security & Privacy | Threat model, privacy considerations and security review | `siehseton2-hue` | Initial threat list | Proposed |
+| QA / Test + OPS / DevOps & Documentation | Test planning, repository documentation and deployment research | Member 9 — GitHub username to confirm | Test cases and infrastructure research | Proposed |
 
 ## Individual work log
+
 | Member | Primary role | Issue/PR link | Deliverable | Due date | Evidence/status |
 |---|---|---|---|---|---|
-| To complete | | | | | |
+| `fraccazahnmie` | PO / Project Lead | To create | Requirements and backlog review | 27 October 2026 | Proposed |
+| Member 2 — username to confirm | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
+| `fredtuopay632-svg` | API Designer | To create | API endpoint draft | 27 October 2026 | Proposed |
+| Regstopher Jarsor — username to confirm | ID | To create | Authentication and permissions breakdown | 27 October 2026 | Proposed |
+| `josephbnyeplu-cyber` | CORE | To create | Core workflow breakdown | 27 October 2026 | Proposed |
+| `madisonjuah1-hue` | DB | To create | Entity inventory and ERD | 27 October 2026 | Proposed |
+| `odascosallison-glitch` | UX | To create | Wireframes and PWA plan | 27 October 2026 | Proposed |
+| `siehseton2-hue` | SEC | To create | Initial threat list | 27 October 2026 | Proposed |
+| Member 9 — username to confirm | QA / OPS | To create | Test cases and infrastructure research | 27 October 2026 | Proposed |
 
 ## Week 1 recovery
-Week 1 was due 20 October. Record completed and outstanding work honestly. Prioritize requirements, five-classmate interviews, repo policies, role assignments, API/data/security/testing inventories, and personal task plans.
+
+Week 1 was due 20 October 2026. The team will record completed and outstanding work honestly, prioritize requirements and interview-documentation gaps, confirm role assignments, and create traceable tasks for the remaining design, API, database, security, testing and infrastructure work.
+
+**Status note:** Proposed assignments are not confirmed until the team agrees to them. Deliverables should be marked complete only when there is evidence, such as a reviewed document, issue, pull request or test result.
