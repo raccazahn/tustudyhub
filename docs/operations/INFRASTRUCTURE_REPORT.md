@@ -32,3 +32,14 @@ Include checked date and source links. Budget for at least 12 months, including 
 - [ ] Automated DB backup and tested restore.
 - [ ] Deployment/rollback steps and health check documented.
 - [ ] Monitoring/logging in place.
+
+## Preliminary Infrastructure Decision
+
+- **Domain registrar:** Cloudflare Registrar, subject to domain availability, supported TLDs, account eligibility, and checkout price.
+- **DNS management:** Cloudflare DNS.
+- **DNS proxy/security:** Cloudflare proxy where appropriate, with origin-server security and HTTPS configured correctly.
+- **Application hosting:** VPS provider not yet selected.
+- **Deployment status:** Not yet deployed.
+- **Backup and recovery status:** Automation and restore testing pending.
+
+Cloudflare provides DNS and related internet infrastructure services; it does not replace the VPS required to run the FastAPI application and PostgreSQL database. Provider selection, the 12-month budget, backup storage, and deployment configuration remain open decisions.
