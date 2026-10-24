@@ -1,7 +1,8 @@
 # Technology Decisions
 
 ## Status
-Recommended baseline from the project lead; pending team confirmation. Check the lecturer's acceptance checklist before finalizing.
+
+The project team has selected the technology stack listed below. Implementation details and operational decisions that remain unresolved are tracked separately and must be finalized before the relevant features are implemented or deployed.
 
 ## Recommended stack
 - Backend: Python + FastAPI.
