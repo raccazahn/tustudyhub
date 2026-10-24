@@ -5,7 +5,7 @@ The current team consists of nine members. Each member has a proposed primary ro
 | Role | Responsibility | Member | First deliverable | Status |
 |---|---|---|---|---|
 | PO / Project Lead | Charter, backlog, requirements, coordination and progress tracking | `BoyAlone` | Requirements review and prioritized backlog | Proposed |
-| ARCH / System Architect | Architecture diagram, system structure and System Design Document | deliehcomfort@gmail.co | Reviewed architecture diagram | Proposed |
+| ARCH / System Architect | Architecture diagram, system structure and System Design Document | deliehcomfort@gmail.com | Reviewed architecture diagram | Proposed |
 | API Designer | REST API resources, endpoint contracts and OpenAPI documentation | `fredtuopay632-svg` | API endpoint and request/response draft | Proposed |
 | ID / Backend Identity | Registration, login, roles and permissions | Regstopher Jarsor | Authentication and permissions breakdown | Proposed |
 | CORE / Backend Core | Papers, verification, revocation and quizzes | `josephbnyeplu-cyber` | Core workflow breakdown | Proposed |
@@ -19,14 +19,14 @@ The current team consists of nine members. Each member has a proposed primary ro
 | Member | Primary role | Issue/PR link | Deliverable | Due date | Evidence/status |
 |---|---|---|---|---|---|
 | `fraccazahnmie` | PO / Project Lead | To create | Requirements and backlog review | 27 October 2026 | Proposed |
-| Member 2 — username to confirm | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
+| deliehcomfort@gmail.com | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
 | `fredtuopay632-svg` | API Designer | To create | API endpoint draft | 27 October 2026 | Proposed |
-| Regstopher Jarsor — username to confirm | ID | To create | Authentication and permissions breakdown | 27 October 2026 | Proposed |
+| Regstopher Jarsor | ID | To create | Authentication and permissions breakdown | 27 October 2026 | Proposed |
 | `josephbnyeplu-cyber` | CORE | To create | Core workflow breakdown | 27 October 2026 | Proposed |
 | `madisonjuah1-hue` | DB | To create | Entity inventory and ERD | 27 October 2026 | Proposed |
 | `odascosallison-glitch` | UX | To create | Wireframes and PWA plan | 27 October 2026 | Proposed |
 | `siehseton2-hue` | SEC | To create | Initial threat list | 27 October 2026 | Proposed |
-| Member 9 — username to confirm | QA / OPS | To create | Test cases and infrastructure research | 27 October 2026 | Proposed |
+| youngejessican@gmail.com | QA / OPS | To create | Test cases and infrastructure research | 27 October 2026 | Proposed |
 
 ## Week 1 recovery
 
