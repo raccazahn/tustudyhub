@@ -4,15 +4,15 @@ The current team consists of nine members. Each member has a proposed primary ro
 
 | Role | Responsibility | Member | First deliverable | Status |
 |---|---|---|---|---|
-| PO / Project Lead | Charter, backlog, requirements, coordination and progress tracking | `fraccazahnmie` | Requirements review and prioritized backlog | Proposed |
-| ARCH / System Architect | Architecture diagram, system structure and System Design Document | Member 2 — GitHub username to confirm | Reviewed architecture diagram | Proposed |
+| PO / Project Lead | Charter, backlog, requirements, coordination and progress tracking | `BoyAlone` | Requirements review and prioritized backlog | Proposed |
+| ARCH / System Architect | Architecture diagram, system structure and System Design Document | deliehcomfort@gmail.co | Reviewed architecture diagram | Proposed |
 | API Designer | REST API resources, endpoint contracts and OpenAPI documentation | `fredtuopay632-svg` | API endpoint and request/response draft | Proposed |
-| ID / Backend Identity | Registration, login, roles and permissions | Regstopher Jarsor — GitHub username to confirm | Authentication and permissions breakdown | Proposed |
+| ID / Backend Identity | Registration, login, roles and permissions | Regstopher Jarsor | Authentication and permissions breakdown | Proposed |
 | CORE / Backend Core | Papers, verification, revocation and quizzes | `josephbnyeplu-cyber` | Core workflow breakdown | Proposed |
 | DB / Database Engineer | Entities, ERD, migrations, indexes and backup design | `madisonjuah1-hue` | Entity inventory and ERD | Proposed |
 | UX / Frontend | Wireframes, mobile PWA and interface planning | `odascosallison-glitch` | Initial wireframes and PWA plan | Proposed |
 | SEC / Security & Privacy | Threat model, privacy considerations and security review | `siehseton2-hue` | Initial threat list | Proposed |
-| QA / Test + OPS / DevOps & Documentation | Test planning, repository documentation and deployment research | Member 9 — GitHub username to confirm | Test cases and infrastructure research | Proposed |
+| QA / Test + OPS / DevOps & Documentation | Test planning, repository documentation and deployment research | youngejessican@gmail.com | Test cases and infrastructure research | Proposed |
 
 ## Individual work log
 
