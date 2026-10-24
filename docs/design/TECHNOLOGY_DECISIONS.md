@@ -32,15 +32,15 @@ The stack alone does not guarantee security, performance or offline operation. T
 
 | Decision | Recommendation | Status |
 |---|---|---|
-| Backend | Python + FastAPI | Pending team confirmation |
-| Database | PostgreSQL | Pending team confirmation |
-| Database access and migrations | SQLAlchemy + Alembic | Pending team confirmation |
-| Frontend | HTML, CSS and JavaScript | Pending team confirmation |
+| Backend | Python + FastAPI | Selected by team |
+| Database | PostgreSQL | Selected by team |
+| Database access and migrations | SQLAlchemy + Alembic | Selected by team |
+| Frontend | HTML, CSS and JavaScript | Selected by team |
 | API | REST/JSON under `/api/v1/` | Required design target; exact contract pending |
 | PWA | Manifest and service worker | Required; implementation plan pending |
-| Testing | pytest + HTTPX | Pending team confirmation |
-| Code quality | Ruff | Pending team confirmation |
-| Methodology | Agile with weekly increments and reviewed pull requests | Pending team confirmation |
+| Testing | pytest + HTTPX | Selected by team |
+| Code quality | Ruff |Selected by team |
+| Methodology | Agile with weekly increments and reviewed pull requests | Selected by team |
 | Hosting | Linux VPS + registered domain + HTTPS | Required; provider, cost and setup need research |
 
 ## Decisions still required
