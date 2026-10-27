@@ -19,7 +19,7 @@ The current team consists of nine members. Each member has a proposed primary ro
 | Member | Primary role | Issue/PR link | Deliverable | Due date | Evidence/status |
 |---|---|---|---|---|---|
 | Princeton | PO / Project Lead | To create | Requirements and backlog review | 27 October 2026 | Proposed |
-| Comfprt | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
+| Comfort | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
 | Darius | API Designer | To create | API endpoint draft | 27 October 2026 | Proposed |
 | Regstopher | ID | To create | Authentication and permissions breakdown | 27 October 2026 | Proposed |
 | Joseph | CORE | To create | Core workflow breakdown | 27 October 2026 | Proposed |
