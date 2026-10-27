@@ -6,13 +6,13 @@ The current team consists of nine members. Each member has a proposed primary ro
 |---|---|---|---|---|
 | PO / Project Lead | Charter, backlog, requirements, coordination and progress tracking | Princeton | Requirements review and prioritized backlog | Proposed |
 | ARCH / System Architect | Architecture diagram, system structure and System Design Document | Comfort | Reviewed architecture diagram | Proposed |
-| API Designer | REST API resources, endpoint contracts and OpenAPI documentation | `fredtuopay632-svg` | API endpoint and request/response draft | Proposed |
-| ID / Backend Identity | Registration, login, roles and permissions | Regstopher Jarsor | Authentication and permissions breakdown | Proposed |
-| CORE / Backend Core | Papers, verification, revocation and quizzes | `josephbnyeplu-cyber` | Core workflow breakdown | Proposed |
-| DB / Database Engineer | Entities, ERD, migrations, indexes and backup design | `madisonjuah1-hue` | Entity inventory and ERD | Proposed |
-| UX / Frontend | Wireframes, mobile PWA and interface planning | `odascosallison-glitch` | Initial wireframes and PWA plan | Proposed |
-| SEC / Security & Privacy | Threat model, privacy considerations and security review | `siehseton2-hue` | Initial threat list | Proposed |
-| QA / Test + OPS / DevOps & Documentation | Test planning, repository documentation and deployment research | `Jessica` | Test cases and infrastructure research | Proposed |
+| API Designer | REST API resources, endpoint contracts and OpenAPI documentation | Darius | API endpoint and request/response draft | Proposed |
+| ID / Backend Identity | Registration, login, roles and permissions | Regstopher | Authentication and permissions breakdown | Proposed |
+| CORE / Backend Core | Papers, verification, revocation and quizzes | Joseph | Core workflow breakdown | Proposed |
+| DB / Database Engineer | Entities, ERD, migrations, indexes and backup design |Madison | Entity inventory and ERD | Proposed |
+| UX / Frontend | Wireframes, mobile PWA and interface planning | Odasco | Initial wireframes and PWA plan | Proposed |
+| SEC / Security & Privacy | Threat model, privacy considerations and security review | Sieh | Initial threat list | Proposed |
+| QA / Test + OPS / DevOps & Documentation | Test planning, repository documentation and deployment research | Jessica | Test cases and infrastructure research | Proposed |
 
 ## Individual work log
 
