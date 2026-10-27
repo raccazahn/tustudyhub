@@ -18,15 +18,15 @@ The current team consists of nine members. Each member has a proposed primary ro
 
 | Member | Primary role | Issue/PR link | Deliverable | Due date | Evidence/status |
 |---|---|---|---|---|---|
-| `fraccazahnmie` | PO / Project Lead | To create | Requirements and backlog review | 27 October 2026 | Proposed |
-| deliehcomfort@gmail.com | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
-| `fredtuopay632-svg` | API Designer | To create | API endpoint draft | 27 October 2026 | Proposed |
-| Regstopher Jarsor | ID | To create | Authentication and permissions breakdown | 27 October 2026 | Proposed |
-| `josephbnyeplu-cyber` | CORE | To create | Core workflow breakdown | 27 October 2026 | Proposed |
-| `madisonjuah1-hue` | DB | To create | Entity inventory and ERD | 27 October 2026 | Proposed |
-| `odascosallison-glitch` | UX | To create | Wireframes and PWA plan | 27 October 2026 | Proposed |
-| `siehseton2-hue` | SEC | To create | Initial threat list | 27 October 2026 | Proposed |
-| youngejessican@gmail.com | QA / OPS | To create | Test cases and infrastructure research | 27 October 2026 | Proposed |
+| Princeton | PO / Project Lead | To create | Requirements and backlog review | 27 October 2026 | Proposed |
+| Comfprt | ARCH | To create | Architecture diagram | 27 October 2026 | Proposed |
+| Darius | API Designer | To create | API endpoint draft | 27 October 2026 | Proposed |
+| Regstopher | ID | To create | Authentication and permissions breakdown | 27 October 2026 | Proposed |
+| Joseph | CORE | To create | Core workflow breakdown | 27 October 2026 | Proposed |
+| Madison | DB | To create | Entity inventory and ERD | 27 October 2026 | Proposed |
+| Odasco | UX | To create | Wireframes and PWA plan | 27 October 2026 | Proposed |
+| Sieh | SEC | To create | Initial threat list | 27 October 2026 | Proposed |
+| Jessica | QA / OPS | To create | Test cases and infrastructure research | 27 October 2026 | Proposed |
 
 ## Week 1 recovery
 
