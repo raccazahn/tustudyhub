@@ -211,11 +211,11 @@ Advanced moderation queues, formal appeals, document version history and extende
 
 **FR-046 — Unique identifier:** Each approved document shall receive a unique identifier.
 
-**FR-047 — Visible stamp:** The generated or applied verification stamp shall display the identifier, course, approval date and approving role information.
+**FR-047 — Unique identifier:** Each approved document shall receive a unique identifier.
 
-**FR-048 — QR token:** Each approved document shall have a QR code containing or resolving through a non-guessable verification token. Verification shall be checked by the server.
+**FR-048 — Visible stamp:** The generated or applied verification stamp shall display the identifier, course, approval date and approving role information.
 
-**FR-049 — Public verification page:** Scanning a valid QR code shall open a public verification page showing the document's current verification status and limited public metadata.
+**FR-049 — QR token:** Each approved document shall have a QR code containing or resolving through a non-guessable verification token. Verification shall be checked by the server.
 
 **FR-050 — Status changes:** A valid verification page shall distinguish current approval from revoked or otherwise invalid status. Restricted or removed material shall not continue to appear as currently approved.
 
