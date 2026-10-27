@@ -209,11 +209,11 @@ Advanced moderation queues, formal appeals, document version history and extende
 
 ### 3.6 Document Identity and Public Verification
 
-**FR-046 — Unique identifier:** Each approved document version requiring verification shall have a unique identifier.
+**FR-046 — Unique identifier:** Each approved document shall receive a unique identifier.
 
 **FR-047 — Visible stamp:** The generated or applied verification stamp shall display the identifier, course, approval date and approving role information.
 
-**FR-048 — QR token:** The QR code shall contain or resolve through a non-guessable verification token. Verification shall be checked by the server.
+**FR-048 — QR token:** Each approved document shall have a QR code containing or resolving through a non-guessable verification token. Verification shall be checked by the server.
 
 **FR-049 — Public verification page:** Scanning a valid QR code shall open a public verification page showing the document's current verification status and limited public metadata.
 
@@ -344,7 +344,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 
 ### 5.5 Verification and moderation
 
-- [ ] An approved document requiring verification receives its identifier, stamp and QR verification token.
+- [ ] Every approved document receives its unique identifier, visible verification stamp and QR verification token.
 - [ ] A valid QR opens the public verification page.
 - [ ] Revoked, restricted or removed material is not displayed as currently approved.
 - [ ] Private information and restricted files are not exposed publicly.
