@@ -5,8 +5,8 @@
 **Institution:** William V. S. Tubman University  
 **Department:** Computer Science  
 **Course:** System Design  
-**Project Team:** [Enter team name or members]  
-**Project Supervisor:** [Enter lecturer's name]  
+**Project Team:** Team B  
+**Project Supervisor:** Prof Kwitee  
 **Report Status:** Working Draft  
 **Target Submission Date:** November 17, 2026  
 **Deployment URL:** [Enter live URL when available]
@@ -181,7 +181,7 @@ The following section should be completed when the relevant people have reviewed
 |---|---|---|---|
 | Project Coordinator | [Name] | [Pending] | [Date] |
 | Team Representative | [Name] | [Pending] | [Date] |
-| Project Supervisor / Lecturer | [Name] | [Pending] | [Date] |
+| Project Supervisor / Lecturer |Prof. Kwitee | [Pending] | [Date] |
 
 Approval must not be implied until it has actually been given.
 
