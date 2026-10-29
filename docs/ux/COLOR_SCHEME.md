@@ -1,102 +1,85 @@
-# TuStudyHub Color Scheme
+# TuStudyHub — Color System
 
-**Status:** Working Draft  
-**Purpose:** Define the approved color names, hex values, and usage restrictions for the TuStudyHub interface.
+> **Status:** Working Draft · Pending Team Review  
+> A visual reference for the TuStudyHub interface palette and its approved usage.
 
-## 1. Color Philosophy
+## Palette at a Glance
 
-TuStudyHub uses a warm, neutral foundation with restrained Clay accents and distinct semantic colors.
+| Kaolin · Neutral Foundation | Clay · Accent Palette |
+|---|---|
+| ![Kaolin page](https://img.shields.io/badge/Page-_%20-F7F5F1?style=flat-square) `#F7F5F1` | ![Clay accent](https://img.shields.io/badge/Accent-_%20-A84D16?style=flat-square) `#A84D16` |
+| ![Kaolin text](https://img.shields.io/badge/Text-_%20-1C1A17?style=flat-square) `#1C1A17` | ![Clay fill](https://img.shields.io/badge/Fill-_%20-C2691D?style=flat-square) `#C2691D` |
+| ![Kaolin border](https://img.shields.io/badge/Border-_%20-C4BEB4?style=flat-square) `#C4BEB4` | ![Clay tint](https://img.shields.io/badge/Tint-_%20-F7E4D0?style=flat-square) `#F7E4D0` |
 
-- **Kaolin:** Primary neutral foundation for approximately 90% of the interface's visual area.
-- **Clay:** Accent palette inspired by laterite ochre; never the primary action color.
-- **Referral status colors:** Communicate referral states using a label, shape, and color.
-- **Support colors:** Communicate confirmations, warnings, errors, and notices.
-- **Chart series:** Use the specified colors in their fixed order.
-- **Identity red:** Reserved for identity-related use only.
+## 1. Core Palette
 
-Exact values and roles in this document must be preserved during implementation.
+### Clay — Accent
 
-## 2. Clay — Accent
+| Token | Preview | Hex | Use |
+|---|---|---|---|
+| `clay-700` | ![#8A3E12](https://img.shields.io/badge/-%20-8A3E12?style=flat-square) | `#8A3E12` | Tinted fills |
+| `clay-600` | ![#A84D16](https://img.shields.io/badge/-%20-A84D16?style=flat-square) | `#A84D16` | Accent text/icons |
+| `clay-500` | ![#C2691D](https://img.shields.io/badge/-%20-C2691D?style=flat-square) | `#C2691D` | Fills only |
+| `clay-400` | ![#D98A3D](https://img.shields.io/badge/-%20-D98A3D?style=flat-square) | `#D98A3D` | Chart series 5 |
+| `clay-100` | ![#F7E4D0](https://img.shields.io/badge/-%20-F7E4D0?style=flat-square) | `#F7E4D0` | Callout background |
+| `clay-50` | ![#FBF1E6](https://img.shields.io/badge/-%20-FBF1E6?style=flat-square) | `#FBF1E6` | Highlight rows |
 
-Clay provides warmth and visual emphasis. It must not replace the neutral foundation or become the primary action color.
+### Kaolin — Neutral
 
-| Token | Hex | Approved use |
-|---|---|---|
-| `clay-700` | `#8A3E12` | On tinted fills |
-| `clay-600` | `#A84D16` | Accent text and icons |
-| `clay-500` | `#C2691D` | Fills only; never text |
-| `clay-400` | `#D98A3D` | Chart series 5 |
-| `clay-100` | `#F7E4D0` | Callout background |
-| `clay-50` | `#FBF1E6` | Highlight rows |
+| Token | Preview | Hex | Use |
+|---|---|---|---|
+| `kaolin-900` | ![#1C1A17](https://img.shields.io/badge/-%20-1C1A17?style=flat-square) | `#1C1A17` | Body text |
+| `kaolin-700` | ![#4A463F](https://img.shields.io/badge/-%20-4A463F?style=flat-square) | `#4A463F` | Secondary text |
+| `kaolin-500` | ![#726B62](https://img.shields.io/badge/-%20-726B62?style=flat-square) | `#726B62` | Muted text |
+| `kaolin-300` | ![#C4BEB4](https://img.shields.io/badge/-%20-C4BEB4?style=flat-square) | `#C4BEB4` | Input borders |
+| `kaolin-200` | ![#DDD8CF](https://img.shields.io/badge/-%20-DDD8CF?style=flat-square) | `#DDD8CF` | Hairline rules |
+| `kaolin-100` | ![#EDE9E2](https://img.shields.io/badge/-%20-EDE9E2?style=flat-square) | `#EDE9E2` | Table headers |
+| `kaolin-50` | ![#F7F5F1](https://img.shields.io/badge/-%20-F7F5F1?style=flat-square) | `#F7F5F1` | Page background |
+| `white` | ![#FFFFFF](https://img.shields.io/badge/-%20-FFFFFF?style=flat-square) | `#FFFFFF` | Cards and tables |
 
-## 3. Kaolin — Neutral
+## 2. Semantic Colors
 
-Kaolin provides the warm, readable foundation for most interface elements.
-
-| Token | Hex | Approved use |
-|---|---|---|
-| `kaolin-900` | `#1C1A17` | Body text |
-| `kaolin-700` | `#4A463F` | Secondary text |
-| `kaolin-500` | `#726B62` | Muted text |
-| `kaolin-300` | `#C4BEB4` | Input borders |
-| `kaolin-200` | `#DDD8CF` | Hairline rules |
-| `kaolin-100` | `#EDE9E2` | Table headers |
-| `kaolin-50` | `#F7F5F1` | Page background |
-| `white` | `#FFFFFF` | Cards and tables |
-
-## 4. Referral Status Colors
-
-Every referral status must use its defined label, shape, foreground color, and background color. Never rely on color alone.
+### Referral Statuses
 
 | Status | Symbol | Foreground | Background |
 |---|:---:|---|---|
-| `pending` | ○ | `#726B62` | `#F7F5F1` |
-| `accepted` | ● | `#1B4F80` | `#D6E3F0` |
-| `in_progress` | ◐ | `#A84D16` | `#F7E4D0` |
-| `completed` | ✓ | `#1F6F4A` | `#DCEAE1` |
-| `closed` | ■ | `#4A463F` | `#DDD8CF` |
-| `rejected` | ✕ | `#A32B1E` | `#F4DAD6` |
+| `pending` | ○ | ![#726B62](https://img.shields.io/badge/-%20-726B62?style=flat-square) `#726B62` | ![#F7F5F1](https://img.shields.io/badge/-%20-F7F5F1?style=flat-square) `#F7F5F1` |
+| `accepted` | ● | ![#1B4F80](https://img.shields.io/badge/-%20-1B4F80?style=flat-square) `#1B4F80` | ![#D6E3F0](https://img.shields.io/badge/-%20-D6E3F0?style=flat-square) `#D6E3F0` |
+| `in_progress` | ◐ | ![#A84D16](https://img.shields.io/badge/-%20-A84D16?style=flat-square) `#A84D16` | ![#F7E4D0](https://img.shields.io/badge/-%20-F7E4D0?style=flat-square) `#F7E4D0` |
+| `completed` | ✓ | ![#1F6F4A](https://img.shields.io/badge/-%20-1F6F4A?style=flat-square) `#1F6F4A` | ![#DCEAE1](https://img.shields.io/badge/-%20-DCEAE1?style=flat-square) `#DCEAE1` |
+| `closed` | ■ | ![#4A463F](https://img.shields.io/badge/-%20-4A463F?style=flat-square) `#4A463F` | ![#DDD8CF](https://img.shields.io/badge/-%20-DDD8CF?style=flat-square) `#DDD8CF` |
+| `rejected` | ✕ | ![#A32B1E](https://img.shields.io/badge/-%20-A32B1E?style=flat-square) `#A32B1E` | ![#F4DAD6](https://img.shields.io/badge/-%20-F4DAD6?style=flat-square) `#F4DAD6` |
 
-The displayed label must match the actual status returned by the application. Do not infer a completed or accepted status from styling alone.
+### Support Feedback
 
-## 5. Support Colors
-
-| Token | Hex | Purpose |
+| Role | Preview | Hex |
 |---|---|---|
-| `success` | `#1F6F4A` | Confirmations |
-| `warning` | `#9A6309` | Warnings |
-| `danger` | `#A32B1E` | Errors |
-| `info` | `#1B4F80` | Notices |
-| `flag-red` | `#BF0A30` | Identity only |
+| Success | ![#1F6F4A](https://img.shields.io/badge/-%20-1F6F4A?style=flat-square) | `#1F6F4A` |
+| Warning | ![#9A6309](https://img.shields.io/badge/-%20-9A6309?style=flat-square) | `#9A6309` |
+| Danger | ![#A32B1E](https://img.shields.io/badge/-%20-A32B1E?style=flat-square) | `#A32B1E` |
+| Info | ![#1B4F80](https://img.shields.io/badge/-%20-1B4F80?style=flat-square) | `#1B4F80` |
+| Identity red · restricted | ![#BF0A30](https://img.shields.io/badge/-%20-BF0A30?style=flat-square) | `#BF0A30` |
 
-Support messages should use readable text and an appropriate icon or label. Choose a background that provides sufficient contrast with the foreground.
+## 3. Chart Palette
 
-`flag-red` must not be reused as a general-purpose danger or error color.
+**Fixed order — do not rearrange between charts.**
 
-## 6. Chart Series
+| Series | Color | Hex |
+|---:|---|---|
+| 1 | ![#0B2545](https://img.shields.io/badge/-%20-0B2545?style=flat-square) | `#0B2545` |
+| 2 | ![#A84D16](https://img.shields.io/badge/-%20-A84D16?style=flat-square) | `#A84D16` |
+| 3 | ![#2A6DA8](https://img.shields.io/badge/-%20-2A6DA8?style=flat-square) | `#2A6DA8` |
+| 4 | ![#1F6F4A](https://img.shields.io/badge/-%20-1F6F4A?style=flat-square) | `#1F6F4A` |
+| 5 | ![#D98A3D](https://img.shields.io/badge/-%20-D98A3D?style=flat-square) | `#D98A3D` |
+| 6 | ![#7FA8CE](https://img.shields.io/badge/-%20-7FA8CE?style=flat-square) | `#7FA8CE` |
+| 7 | ![#4A463F](https://img.shields.io/badge/-%20-4A463F?style=flat-square) | `#4A463F` |
+| 8 | ![#A32B1E](https://img.shields.io/badge/-%20-A32B1E?style=flat-square) | `#A32B1E` |
 
-Chart colors must be used in this exact order. Do not reorder them between charts or categories.
-
-| Series | Hex |
-|---:|---|
-| 1 | `#0B2545` |
-| 2 | `#A84D16` |
-| 3 | `#2A6DA8` |
-| 4 | `#1F6F4A` |
-| 5 | `#D98A3D` |
-| 6 | `#7FA8CE` |
-| 7 | `#4A463F` |
-| 8 | `#A32B1E` |
-
-Charts must also use readable labels, legends, or other appropriate identifiers so that the information is not communicated through color alone.
-
-## 7. CSS Design Tokens
-
-The following CSS provides the complete reusable palette. Semantic status and chart tokens remain separate from the core neutral and accent tokens.
+## 4. CSS Tokens
 
 ```css
 :root {
-  /* Clay — accent */
+  /* Clay */
   --clay-700: #8A3E12;
   --clay-600: #A84D16;
   --clay-500: #C2691D;
@@ -104,7 +87,7 @@ The following CSS provides the complete reusable palette. Semantic status and ch
   --clay-100: #F7E4D0;
   --clay-50: #FBF1E6;
 
-  /* Kaolin — neutral */
+  /* Kaolin */
   --kaolin-900: #1C1A17;
   --kaolin-700: #4A463F;
   --kaolin-500: #726B62;
@@ -137,7 +120,7 @@ The following CSS provides the complete reusable palette. Semantic status and ch
   --support-info: #1B4F80;
   --flag-red: #BF0A30;
 
-  /* Charts — preserve this order */
+  /* Charts — fixed order */
   --chart-1: #0B2545;
   --chart-2: #A84D16;
   --chart-3: #2A6DA8;
@@ -149,106 +132,16 @@ The following CSS provides the complete reusable palette. Semantic status and ch
 }
 ```
 
-These tokens define the supplied palette. Primary action tokens must be defined separately after the team confirms the application's action-color decision; Clay must not be used as the primary action color.
+## 5. Usage Rules
 
-## 8. Usage and Accessibility Rules
+- **Neutral first:** Kaolin is the main interface foundation.
+- **Clay is an accent:** Never use Clay as the primary action color.
+- **No Clay text:** `clay-500` is for fills only.
+- **Status is explicit:** Always show the referral label and symbol alongside color.
+- **Identity red is restricted:** `flag-red` is for identity-related use only.
+- **Charts stay ordered:** Preserve series 1–8 and add readable labels or legends.
+- **Accessibility matters:** Verify foreground/background contrast in the rendered interface.
+- **One source of truth:** Use shared CSS variables or equivalent design tokens.
+- **No silent changes:** Palette changes require team approval and documentation updates.
 
-1. Use only the documented palette for interface colors unless a change is approved.
-2. Do not use `clay-500` for text.
-3. Do not use Clay as the primary action color.
-4. Keep chart colors in their specified order.
-5. Use referral labels and symbols in addition to their colors.
-6. Reserve `flag-red` for identity-related use.
-7. Test contrast for each actual foreground/background combination.
-8. Do not assume that a color is accessible in every context simply because its hex value is documented.
-9. Check colors in charts, badges, alerts, disabled controls, focus states, and interactive states.
-10. Update this document whenever a palette change is approved.
-
-## 9. Implementation Notes
-
-This document is the authoritative color reference for TuStudyHub. CSS custom properties or equivalent design tokens should be the shared source for implementation.
-
-Before release, validate the rendered interface against these values and verify accessibility contrast. Do not silently substitute colors or alter the chart order.
-
-**Status:** Working draft pending project-team review.
-
----
-
-## 10. Visual Palette Reference
-
-These swatches provide a visual reference for the existing documented palette. The token tables and CSS definitions above remain authoritative. Clay stays an accent, not a primary action color.
-
-### 10.1 Clay — Accent Palette
-
-| Token | Swatch | Hex |
-|---|---|---|
-| `clay-700` | ![#8A3E12](https://img.shields.io/badge/-%20-8A3E12?style=flat-square) | `#8A3E12` |
-| `clay-600` | ![#A84D16](https://img.shields.io/badge/-%20-A84D16?style=flat-square) | `#A84D16` |
-| `clay-500` | ![#C2691D](https://img.shields.io/badge/-%20-C2691D?style=flat-square) | `#C2691D` |
-| `clay-400` | ![#D98A3D](https://img.shields.io/badge/-%20-D98A3D?style=flat-square) | `#D98A3D` |
-| `clay-100` | ![#F7E4D0](https://img.shields.io/badge/-%20-F7E4D0?style=flat-square) | `#F7E4D0` |
-| `clay-50` | ![#FBF1E6](https://img.shields.io/badge/-%20-FBF1E6?style=flat-square) | `#FBF1E6` |
-
-### 10.2 Kaolin — Neutral Palette
-
-| Token | Swatch | Hex |
-|---|---|---|
-| `kaolin-900` | ![#1C1A17](https://img.shields.io/badge/-%20-1C1A17?style=flat-square) | `#1C1A17` |
-| `kaolin-700` | ![#4A463F](https://img.shields.io/badge/-%20-4A463F?style=flat-square) | `#4A463F` |
-| `kaolin-500` | ![#726B62](https://img.shields.io/badge/-%20-726B62?style=flat-square) | `#726B62` |
-| `kaolin-300` | ![#C4BEB4](https://img.shields.io/badge/-%20-C4BEB4?style=flat-square) | `#C4BEB4` |
-| `kaolin-200` | ![#DDD8CF](https://img.shields.io/badge/-%20-DDD8CF?style=flat-square) | `#DDD8CF` |
-| `kaolin-100` | ![#EDE9E2](https://img.shields.io/badge/-%20-EDE9E2?style=flat-square) | `#EDE9E2` |
-| `kaolin-50` | ![#F7F5F1](https://img.shields.io/badge/-%20-F7F5F1?style=flat-square) | `#F7F5F1` |
-| `white` | ![#FFFFFF](https://img.shields.io/badge/-%20-FFFFFF?style=flat-square) | `#FFFFFF` |
-
-### 10.3 Referral Status Indicators
-
-The following table repeats the documented status mappings with visual foreground and background references. Keep the status label and symbol in the actual interface.
-
-| Status | Symbol | Foreground swatch | Background swatch |
-|---|:---:|---|---|
-| `pending` | ○ | ![#726B62](https://img.shields.io/badge/-%20-726B62?style=flat-square) | ![#F7F5F1](https://img.shields.io/badge/-%20-F7F5F1?style=flat-square) |
-| `accepted` | ● | ![#1B4F80](https://img.shields.io/badge/-%20-1B4F80?style=flat-square) | ![#D6E3F0](https://img.shields.io/badge/-%20-D6E3F0?style=flat-square) |
-| `in_progress` | ◐ | ![#A84D16](https://img.shields.io/badge/-%20-A84D16?style=flat-square) | ![#F7E4D0](https://img.shields.io/badge/-%20-F7E4D0?style=flat-square) |
-| `completed` | ✓ | ![#1F6F4A](https://img.shields.io/badge/-%20-1F6F4A?style=flat-square) | ![#DCEAE1](https://img.shields.io/badge/-%20-DCEAE1?style=flat-square) |
-| `closed` | ■ | ![#4A463F](https://img.shields.io/badge/-%20-4A463F?style=flat-square) | ![#DDD8CF](https://img.shields.io/badge/-%20-DDD8CF?style=flat-square) |
-| `rejected` | ✕ | ![#A32B1E](https://img.shields.io/badge/-%20-A32B1E?style=flat-square) | ![#F4DAD6](https://img.shields.io/badge/-%20-F4DAD6?style=flat-square) |
-
-### 10.4 Support Color Indicators
-
-| Token | Swatch | Hex | Purpose |
-|---|---|---|---|
-| `success` | ![#1F6F4A](https://img.shields.io/badge/-%20-1F6F4A?style=flat-square) | `#1F6F4A` | Confirmations |
-| `warning` | ![#9A6309](https://img.shields.io/badge/-%20-9A6309?style=flat-square) | `#9A6309` | Warnings |
-| `danger` | ![#A32B1E](https://img.shields.io/badge/-%20-A32B1E?style=flat-square) | `#A32B1E` | Errors |
-| `info` | ![#1B4F80](https://img.shields.io/badge/-%20-1B4F80?style=flat-square) | `#1B4F80` | Notices |
-| `flag-red` | ![#BF0A30](https://img.shields.io/badge/-%20-BF0A30?style=flat-square) | `#BF0A30` | Identity only |
-
-### 10.5 Chart Series — Fixed Order
-
-The visual swatches follow the same order as the original chart series. Do not reorder the series to match hue or perceived similarity.
-
-| Series | Swatch | Hex |
-|---:|---|---|
-| 1 | ![#0B2545](https://img.shields.io/badge/-%20-0B2545?style=flat-square) | `#0B2545` |
-| 2 | ![#A84D16](https://img.shields.io/badge/-%20-A84D16?style=flat-square) | `#A84D16` |
-| 3 | ![#2A6DA8](https://img.shields.io/badge/-%20-2A6DA8?style=flat-square) | `#2A6DA8` |
-| 4 | ![#1F6F4A](https://img.shields.io/badge/-%20-1F6F4A?style=flat-square) | `#1F6F4A` |
-| 5 | ![#D98A3D](https://img.shields.io/badge/-%20-D98A3D?style=flat-square) | `#D98A3D` |
-| 6 | ![#7FA8CE](https://img.shields.io/badge/-%20-7FA8CE?style=flat-square) | `#7FA8CE` |
-| 7 | ![#4A463F](https://img.shields.io/badge/-%20-4A463F?style=flat-square) | `#4A463F` |
-| 8 | ![#A32B1E](https://img.shields.io/badge/-%20-A32B1E?style=flat-square) | `#A32B1E` |
-
-### 10.6 Palette Usage Summary
-
-| Visual role | Reference |
-|---|---|
-| Main page foundation | Kaolin neutral palette |
-| Accent emphasis | Clay accent palette |
-| Referral state | Documented status label, symbol, foreground, and background |
-| Support feedback | Success, warning, danger, or info token |
-| Identity-related red | `flag-red` only |
-| Data visualization | Chart series 1–8 in documented order |
-
-The visual references are documentation aids, not additional color tokens. They do not authorize a new primary action color or change any existing color role.
+> **Implementation note:** The primary action color remains undecided. Define its token separately after the team approves the choice. The palette above does not introduce a new action color.
