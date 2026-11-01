@@ -1,0 +1,209 @@
+erDiagram
+    roles ||--o{ users : assigned
+    users ||--o{ password_reset_tokens : requests
+    users ||--o{ refresh_tokens : holds
+    users ||--o{ account_deletion_requests : files
+    users ||--o{ contributor_applications : submits
+    courses ||--o{ course_lecturers : staffed_by
+    users ||--o{ course_lecturers : teaches
+    courses ||--o{ papers : groups
+    document_categories ||--o{ papers : classifies
+    users ||--o{ papers : uploads
+    papers ||--o{ paper_files : stores
+    papers ||--o{ paper_decisions : history
+    users ||--o{ paper_decisions : acts
+    papers ||--o{ verifications : verified_by
+    users ||--o{ verifications : approves
+    papers ||--o{ reports : reported_in
+    users ||--o{ reports : files
+    courses ||--o{ quizzes : has
+    users ||--o{ quizzes : authors
+    quizzes ||--o{ quiz_versions : versioned_as
+    quiz_versions ||--o{ quiz_questions : contains
+    quiz_questions ||--o{ quiz_choices : offers
+    quiz_versions ||--o{ quiz_attempts : attempted_in
+    users ||--o{ quiz_attempts : takes
+    quiz_attempts ||--o{ attempt_answers : records
+    quiz_choices ||--o{ attempt_answers : chosen_as
+    users ||--o{ audit_log : performs
+
+    roles {
+        smallint id PK
+        text name UK
+    }
+    users {
+        uuid id PK
+        text email UK
+        timestamptz email_verified_at
+        text password_hash
+        text display_name
+        smallint role_id FK
+        text status
+        boolean must_change_password
+        timestamptz created_at
+    }
+    password_reset_tokens {
+        uuid id PK
+        uuid user_id FK
+        text token_hash UK
+        timestamptz expires_at
+        timestamptz used_at
+    }
+    refresh_tokens {
+        uuid id PK
+        uuid user_id FK
+        text token_hash UK
+        timestamptz expires_at
+        timestamptz revoked_at
+    }
+    account_deletion_requests {
+        uuid id PK
+        uuid user_id FK
+        text status
+        timestamptz requested_at
+        uuid decided_by FK
+        timestamptz decided_at
+        text decision_reason
+    }
+    contributor_applications {
+        uuid id PK
+        uuid applicant_id FK
+        text statement
+        text status
+        timestamptz submitted_at
+        uuid decided_by FK
+        timestamptz decided_at
+        text decision_reason
+    }
+    courses {
+        uuid id PK
+        text code UK
+        text title
+        boolean is_active
+    }
+    course_lecturers {
+        uuid course_id PK,FK
+        uuid user_id PK,FK
+    }
+    document_categories {
+        uuid id PK
+        text name UK
+        boolean is_active
+    }
+    papers {
+        uuid id PK
+        text public_id UK
+        uuid uploader_id FK
+        uuid course_id FK
+        uuid category_id FK
+        text title
+        smallint year
+        text semester
+        text exam_type
+        text lecturer_name
+        text status
+        boolean is_publicly_visible
+        tsvector search_vector
+        timestamptz created_at
+    }
+    paper_files {
+        uuid id PK
+        uuid paper_id FK
+        int sort_order
+        text storage_key UK
+        text mime_type
+        bigint size_bytes
+        text sha256
+        timestamptz created_at
+    }
+    paper_decisions {
+        uuid id PK
+        uuid paper_id FK
+        uuid actor_id FK
+        text action
+        text from_status
+        text to_status
+        text reason
+        timestamptz created_at
+    }
+    verifications {
+        uuid id PK
+        uuid paper_id FK
+        text token_hash UK
+        text status
+        uuid approved_by FK
+        smallint approver_role_id FK
+        timestamptz approved_at
+        uuid revoked_by FK
+        timestamptz revoked_at
+        text revoke_reason
+    }
+    reports {
+        uuid id PK
+        uuid paper_id FK
+        uuid reporter_id FK
+        text report_type
+        text description
+        text status
+        uuid handled_by FK
+        timestamptz handled_at
+        text resolution_note
+        timestamptz created_at
+    }
+    quizzes {
+        uuid id PK
+        uuid course_id FK
+        uuid created_by FK
+        timestamptz created_at
+    }
+    quiz_versions {
+        uuid id PK
+        uuid quiz_id FK
+        int version_number
+        text title
+        text status
+        uuid created_by FK
+        uuid reviewed_by FK
+        timestamptz reviewed_at
+        text review_reason
+        timestamptz published_at
+    }
+    quiz_questions {
+        uuid id PK
+        uuid quiz_version_id FK
+        int position
+        text body
+    }
+    quiz_choices {
+        uuid id PK
+        uuid question_id FK
+        int position
+        text body
+        boolean is_correct
+    }
+    quiz_attempts {
+        uuid id PK
+        uuid quiz_version_id FK
+        uuid user_id FK
+        int score
+        int max_score
+        timestamptz started_at
+        timestamptz submitted_at
+    }
+    attempt_answers {
+        uuid attempt_id PK,FK
+        uuid question_id PK,FK
+        uuid quiz_version_id FK
+        uuid choice_id FK
+    }
+    audit_log {
+        bigint id PK
+        uuid actor_id FK
+        text action
+        text entity_type
+        text entity_id
+        text outcome
+        text reason
+        jsonb details
+        timestamptz created_at
+    }
