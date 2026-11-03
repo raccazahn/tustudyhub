@@ -74,7 +74,12 @@ This approach avoids the additional deployment and monitoring overhead of micros
 7. **Quiz module:** quiz authoring, review, versioning, questions, choices, attempts, and scoring.
 8. **Verification module:** stable paper identifiers, non-guessable tokens, public verification, and revocation history.
 9. **Notification module:** in-app and email notifications, with browser push where supported and configured.
-10. **Operations:** logs, health checks, automated tests, migrations, backup/restore, and deployment checks.
+10. **Notifications and feedback:** persistent in-app notifications, configured delivery channels, user feedback submission and administrative triage.
+11. **Academic Q&A:** course-related questions and answers with reporting and moderation.
+12. **Analytics:** privacy-aware, role-restricted administrative reporting.
+13. **AI quiz assistance:** draft generation, deterministic validation, syllabus relevance checks and lecturer approval.
+14. **Offline synchronization:** eligible local content, queued permitted actions, retry/idempotency, conflict resolution and account-isolated caches.
+15. **Operations:** logs, health checks, automated tests, migrations, backup/restore, and deployment checks.
 
 ### 3.3 Logical architecture diagram
 
@@ -275,7 +280,7 @@ The first administrator account must be provisioned through a controlled process
 
 The system is intended for phone-first use and inconsistent connectivity. Favor lightweight responsive pages, compressed assets, pagination, explicit loading/error states, and retryable uploads. Failed uploads must not be reported as successful, and retries should avoid accidental duplicate submissions.
 
-Offline reading is limited to explicitly saved eligible public materials. Restricted/private content must not be cached. The interface should explain that saved copies may be outdated and synchronization requires connectivity. Offline support does not mean verification, enrollment changes, quiz submissions, or moderation actions can safely complete without a connection.
+Offline capability must cover previously synchronized eligible content and only those actions explicitly designed for safe queuing. Restricted/private content and privileged administrative data must not be placed in unprotected caches. Queued actions require idempotency, retry, conflict handling and clear pending/failed/synchronized states. Server-authoritative operations such as verification status changes, approvals and other privileged actions must not be represented as completed before server confirmation. PostgreSQL remains the central source of truth.
 
 Provide health checks, structured logs, and alerts where supported. Coordinate database and file backups so restored records do not point to missing files. Test restoration, not only backup creation.
 
