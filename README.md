@@ -1,64 +1,71 @@
 # TuStudyHub
-### Learn • Share • Verify — Tertiary Academic Resource & Verification Platform
 
-**Course:** System Design · **Final deadline:** 17 November 2026  
-**Repository:** [raccazahn/tustudyhub](https://github.com/raccazahn/tustudyhub)  
-**Status:** Planning, requirements and implementation alignment  
-**Methodology:** Agile is proposed, pending team confirmation.  
-**Proposed stack:** Python + FastAPI, PostgreSQL, HTML, CSS and JavaScript; final choices must be confirmed and justified.
+**Learn • Share • Verify**  
+*Tertiary Academic Resource and Verification Platform*
 
-TuStudyHub aims to provide a searchable academic document library, multiple-choice quizzes, and public verification for approved papers.
+TuStudyHub is a Computer Science team project for organizing approved academic resources, supporting course-based learning, and providing public verification of approved documents. It is designed as a responsive web application and installable PWA backed by one versioned API and a central PostgreSQL database.
 
-## Required live features
-1. **Document library:** upload, browse by course and type, and download examination papers, thesis papers and course syllabi; lecturer or moderator approval.
-2. **Quizzes:** multiple-choice quizzes created by lecturers and approved authors, with automatic marking and student scores.
-3. **Digital identifier and stamp:** unique ID and visible stamp with a QR code leading to a public **Verified** or **Revoked** page.
+## Project scope
 
-Also required: accounts and roles, documented public API, installable phone-friendly PWA, and live VPS deployment under a registered domain.
+- Academic library for examination papers, thesis papers and syllabi.
+- College, department and course catalogue.
+- Role-based accounts, review and approval workflows.
+- Unique document identifiers, verification stamps, QR codes and public status pages.
+- MCQ quizzes, automatic marking and score history.
+- Ratings/reviews, notifications, academic Q&A, feedback and administrative analytics.
+- Hybrid AI-assisted quiz drafting with deterministic validation and lecturer approval.
+- Secure offline access and synchronization for eligible data.
+- Shared backend and database for web, desktop and Android PWA clients.
 
-## Documentation hub
+The project is **not** a full student information system and does not replace official university admissions, enrollment or academic-record systems.
+
+## Current implementation status
+
+The Copilot Stage 1 audit supplied on 3 November 2026 reports that the application currently uses an in-memory runtime store rather than PostgreSQL. It also identifies visitor-permission gaps and missing ratings, notifications, Q&A and full offline synchronization. These are open implementation tasks, not completed features. TypeScript and production-build checks were not run because dependencies were not installed in that workspace.
+
+See the [Project Plan](docs/planning/PROJECT_PLAN.md) for the audit baseline, delivery phases, risks and acceptance criteria.
+
+## Authoritative project documents
 
 | Document | Purpose |
 |---|---|
-| [Project Plan](docs/planning/PROJECT_PLAN.md) | Scope, work breakdown, milestones, roles, risks, quality and change control |
-| [Team roles and task plan](docs/planning/TEAM_AND_TASK_PLAN.md) | Roles and individual evidence |
-| [Backlog and weekly deliverables](docs/planning/BACKLOG_AND_DELIVERABLES.md) | Priority tasks, dates and acceptance checks |
-| [Personal task plan template](docs/planning/PERSONAL_TASK_PLAN_TEMPLATE.md) | Individual graded task plan |
-| [ID/CORE module breakdown](docs/planning/MODULE_BREAKDOWN.md) | Backend module planning |
-| [Final submission checklist](docs/planning/FINAL_SUBMISSION_CHECKLIST.md) | Final package and handover checklist |
-| [Requirements and user stories](docs/requirements/REQUIREMENTS.md) | Source-based requirements and acceptance criteria |
-| [Interview guide](docs/requirements/USER_INTERVIEWS.md) | Interview at least five classmates; findings pending |
-| [Technology decisions](docs/design/TECHNOLOGY_DECISIONS.md) | Proposed stack and decisions to confirm |
-| [System Design Document](docs/design/SYSTEM_DESIGN_DOCUMENT.md) | SDD outline for the Week 2 review |
-| [Architecture](docs/design/ARCHITECTURE.md) | Architecture diagram task |
-| [Data model / ERD](docs/design/DATA_MODEL.md) | Entity inventory and ERD task |
-| [API contract](docs/api/API_SPECIFICATION.md) | API-first resource and endpoint draft |
-| [Mock server plan](docs/api/MOCK_SERVER_PLAN.md) | API-first parallel development |
-| [Wireframes and PWA shell](docs/ux/WIREFRAMES_AND_PWA.md) | Week 2 mobile-first UX deliverable |
-| [Infrastructure report](docs/operations/INFRASTRUCTURE_REPORT.md) | Domain, VPS, capacity, cost and hardening |
-| [Deployment and recovery guide](docs/operations/DEPLOYMENT_AND_RECOVERY.md) | Runbook template |
-| [Threat register](docs/security/THREAT_MODEL.md) | Initial risks and mitigations |
-| [QA test strategy](docs/testing/TEST_STRATEGY.md) | Test levels and acceptance scenarios |
-| [AI-assisted work guide](docs/contributing/AI_USE.md) | Responsible use and disclosure |
-| [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md) · [License status](LICENSE_STATUS.md) | Repository policies |
-| [Issue template](.github/ISSUE_TEMPLATE/task-or-bug.md) · [Pull request template](.github/pull_request_template.md) | Consistent work tracking and review |
+| [Project Plan](docs/planning/PROJECT_PLAN.md) | Scope, work breakdown, team ownership, milestones, risks and delivery controls |
+| [Software Requirements Specification](docs/requirements/REQUIREMENTS.md) | Functional/non-functional requirements and acceptance criteria |
+| [System Design Document](docs/design/SYSTEM_DESIGN_DOCUMENT.md) | System design, workflows and technical structure |
+| [Architecture](docs/design/ARCHITECTURE.md) | Component boundaries and system architecture |
+| [Data Model](docs/design/DATA_MODEL.md) | Core entities and relationships |
+| [Technology Decisions](docs/design/TECHNOLOGY_DECISIONS.md) | Audited stack baseline and unresolved engineering decisions |
+| [REST API Specification](docs/api/API_SPECIFICATION.md) | Versioned API contract and access rules |
+| [UX Wireframes and PWA](docs/ux/WIREFRAMES_AND_PWA.md) | Screen flows and PWA behavior |
+| [Design System](docs/ux/DESIGN_SYSTEM.md) · [Color Scheme](docs/ux/COLOR_SCHEME.md) | Visual standards and brand tokens |
+| [QA Test Strategy](docs/testing/TEST_STRATEGY.md) | Test levels and acceptance scenarios |
+| [Threat Model](docs/security/THREAT_MODEL.md) | Security and privacy risks |
+| [Deployment and Recovery](docs/operations/DEPLOYMENT_AND_RECOVERY.md) | Production setup, backup and recovery |
+| [Responsible AI Use](docs/contributing/AI_USE.md) | AI assistance and disclosure guidance |
 
-## Team workflow
-1. Track work in a GitHub Issue linked to a backlog item.
-2. Work on a branch; do not commit directly to `main`.
-3. Open a focused pull request with test evidence and AI-use disclosure when applicable.
-4. Obtain review from at least one other team member before merging.
-5. Update docs when requirements, endpoints, data structures or behaviour change.
+See the [documentation index](docs/README.md) for the canonical document set.
 
-**Never commit** passwords, API keys, real student data, real exam files, or copyrighted materials the team is not authorized to share. Use synthetic or authorized sample data.
+## Team engineering workflow
 
-## Timeline from the concept paper
-| Week | Dates | Deliverable |
-|---|---|---|
-| 1 | 14–20 Oct | Team setup and requirements — due date has passed; track recovery honestly |
-| 2 | 21–27 Oct | System Design Document; domain and VPS live |
-| 3 | 28 Oct–3 Nov | Foundations and document library live |
-| 4 | 4–10 Nov | Digital stamp and quizzes live |
-| 5 | 11–17 Nov | Final platform, docs, user manual, promotion strategy and handover |
+1. Track tasks and decisions in GitHub Issues.
+2. Create a focused branch for each task; do not commit directly to `main`.
+3. Open a pull request linked to the relevant issue and SRS requirement IDs.
+4. Include tests, screenshots or other evidence appropriate to the change.
+5. Obtain review from another team member before merging.
+6. Update the authoritative documents when behavior, data structures or API contracts change.
 
-The lecturer's acceptance checklist and submission time take precedence. Keep the repository private until after submission; the lecturer should have access from day one. The concept paper says the lecturer will confirm MIT or Apache-2.0 for the class before the final `LICENSE` is selected.
+## Security and academic integrity
+
+Never commit passwords, API keys, JWT secrets, database credentials, real student data, private uploads or academic materials the team is not authorized to distribute. Use synthetic or explicitly authorized test data. Public visibility of a verification page does not make the underlying document downloadable to anonymous visitors.
+
+## Project administration
+
+- **Institution:** William V. S. Tubman University
+- **Department:** Computer Science
+- **Course:** System Design
+- **Team:** Team B
+- **Project lead:** Princeton R. Zahnmie
+- **Lecturer/supervisor:** Confirm against the course submission instructions
+- **Target submission date:** 17 November 2026, subject to lecturer confirmation
+
+The SRS and approved lecturer instructions take precedence over assumptions in draft documents. Implementation and deployment status must be supported by evidence.
