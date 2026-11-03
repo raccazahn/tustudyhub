@@ -1,7 +1,13 @@
+<div align="center">
+
 # TuStudyHub
 
 **Learn • Share • Verify**  
 *Tertiary Academic Resource and Verification Platform*
+
+</div>
+
+---
 
 TuStudyHub is a Computer Science team project for organizing approved academic resources, supporting course-based learning, and providing public verification of approved documents. It is designed as a responsive web application and installable PWA backed by one versioned API and a central PostgreSQL database.
 
@@ -19,16 +25,20 @@ TuStudyHub is a Computer Science team project for organizing approved academic r
 
 The project is **not** a full student information system and does not replace official university admissions, enrollment or academic-record systems.
 
+---
+
 ## Current implementation status
 
-The Copilot Stage 1 audit supplied on 3 November 2026 reports that the application currently uses an in-memory runtime store rather than PostgreSQL. It also identifies visitor-permission gaps and missing ratings, notifications, Q&A and full offline synchronization. These are open implementation tasks, not completed features. TypeScript and production-build checks were not run because dependencies were not installed in that workspace.
+> The Copilot Stage 1 audit supplied on 3 November 2026 reports that the application currently uses an in-memory runtime store rather than PostgreSQL. It also identifies visitor-permission gaps and missing ratings, notifications, Q&A and full offline synchronization. These are open implementation tasks, not completed features. TypeScript and production-build checks were not run because dependencies were not installed in that workspace.
 
 See the [Project Plan](docs/planning/PROJECT_PLAN.md) for the audit baseline, delivery phases, risks and acceptance criteria.
+
+---
 
 ## Authoritative project documents
 
 | Document | Purpose |
-|---|---|
+|:--|:--|
 | [Project Plan](docs/planning/PROJECT_PLAN.md) | Scope, work breakdown, team ownership, milestones, risks and delivery controls |
 | [Software Requirements Specification](docs/requirements/REQUIREMENTS.md) | Functional/non-functional requirements and acceptance criteria |
 | [System Design Document](docs/design/SYSTEM_DESIGN_DOCUMENT.md) | System design, workflows and technical structure |
@@ -45,6 +55,8 @@ See the [Project Plan](docs/planning/PROJECT_PLAN.md) for the audit baseline, de
 
 See the [documentation index](docs/README.md) for the canonical document set.
 
+---
+
 ## Team engineering workflow
 
 1. Track tasks and decisions in GitHub Issues.
@@ -54,9 +66,13 @@ See the [documentation index](docs/README.md) for the canonical document set.
 5. Obtain review from another team member before merging.
 6. Update the authoritative documents when behavior, data structures or API contracts change.
 
+---
+
 ## Security and academic integrity
 
 Never commit passwords, API keys, JWT secrets, database credentials, real student data, private uploads or academic materials the team is not authorized to distribute. Use synthetic or explicitly authorized test data. Public visibility of a verification page does not make the underlying document downloadable to anonymous visitors.
+
+---
 
 ## Project administration
 
