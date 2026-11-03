@@ -145,7 +145,7 @@ Allowed transitions: `pending_review → approved | rejected`; `approved → rev
 | 20 | GET | `/papers/{paper_id}` | Approved public paper metadata | PublicRead |
 | 21 | PATCH | `/papers/{paper_id}` | Edit paper metadata | Owner / Moderator |
 | 22 | DELETE | `/papers/{paper_id}` | Remove paper | Owner (pending only) / Admin |
-| 23 | GET | `/papers/{paper_id}/file` | Download file | Auth* |
+| 23 | GET | `/papers/{paper_id}/file` | Download file | Auth |
 | 24 | GET | `/users/me/papers` | Own submissions | Contributor |
 | 25 | GET | `/moderation/papers` | Review queue | Moderator |
 | 26 | POST | `/papers/{paper_id}/review` | Approve or reject | Moderator |
@@ -155,9 +155,9 @@ Allowed transitions: `pending_review → approved | rejected`; `approved → rev
 | 30 | GET | `/reports` | List reports | Moderator |
 | 31 | GET | `/reports/{report_id}` | Report details | Moderator |
 | 32 | PATCH | `/reports/{report_id}` | Resolve report | Moderator |
-| 33 | GET | `/quizzes` | List quizzes | Auth* |
+| 33 | GET | `/quizzes` | List quizzes | Auth |
 | 34 | POST | `/quizzes` | Create quiz | Lecturer |
-| 35 | GET | `/quizzes/{quiz_id}` | Get quiz to take | Auth* |
+| 35 | GET | `/quizzes/{quiz_id}` | Get quiz to take | Auth |
 | 36 | PATCH | `/quizzes/{quiz_id}` | Update quiz | Quiz author / Admin |
 | 37 | DELETE | `/quizzes/{quiz_id}` | Delete quiz | Quiz author / Admin |
 | 38 | POST | `/quizzes/{quiz_id}/attempts` | Submit answers, get score | Auth |
