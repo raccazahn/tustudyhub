@@ -85,7 +85,7 @@ The baseline requirements include:
 
 Every issue and pull request should reference one or more requirement IDs. Every major requirement should have at least one verification method in the QA plan. If a requirement is deferred, the team must record the reason, impact, owner and approval rather than silently dropping it.
 
-## 5. Deliverables
+## 5. Current implementation baseline\n\nThe following status comes from the Copilot Stage 1 audit report supplied by the project lead on 3 November 2026. It is an audit snapshot, not an independent test performed by this document.\n\n| Area | Reported status | Required action |\n|---|---|---|\n| Runtime persistence | In-memory store; PostgreSQL is not connected | Integrate PostgreSQL and prove persistence after restart |\n| Visitor permissions | Visitors can download approved public files and submit published quiz attempts | Enforce the read-only visitor policy in frontend and every backend route |\n| Ratings, notifications and Q&A | Missing | Implement required capabilities and tests |\n| Offline synchronization | Full synchronization missing | Define cache boundaries, queue, retries, idempotency and conflict handling |\n| TypeScript/build validation | Not run; dependencies are absent and `tsc`/`vite` are unavailable in the workspace | Install dependencies in the correct application folder and rerun checks |\n| Application framework | React/TypeScript source is reported in the app workspace; exact package/framework details still require inspection | Preserve the existing React application; do not add a duplicate frontend |\n| Workspace metadata | Copilot reports no SRS or Git metadata in its workspace copy; the GitHub repository does contain the SRS | Reconcile the local workspace with the authoritative repository and application source |\n\nNo application code was changed during Stage 1. Stages 2–9 remain unstarted according to the supplied report. Do not describe these gaps as completed until a later audit and test evidence confirms them.\n\n## 6. Deliverables
 
 | Deliverable | Required contents / evidence | Primary coordination |
 |---|---|---|
@@ -104,7 +104,7 @@ Every issue and pull request should reference one or more requirement IDs. Every
 
 Do not label a design or feature “implemented”, “tested” or “deployed” without evidence from the current build.
 
-## 6. Work breakdown and execution sequence
+## 7. Work breakdown and execution sequence
 
 ### Phase 0 — Repository and implementation baseline
 
@@ -175,7 +175,7 @@ Do not label a design or feature “implemented”, “tested” or “deployed�
 
 **Exit evidence:** release checklist, deployment record, test report, backup/restore evidence and maintainer handover.
 
-## 7. Team roles and accountability
+## 8. Team roles and accountability
 
 The current team-role assignments recorded in the repository are the planning baseline. Confirm names, GitHub handles and availability with the team before changing assignments.
 
@@ -194,7 +194,7 @@ The current team-role assignments recorded in the repository are the planning ba
 
 A person may assist another workstream, but ownership and review evidence must remain clear. No task is complete solely because an issue was assigned.
 
-## 8. Schedule and milestones
+## 9. Schedule and milestones
 
 The repository records **17 November 2026** as the course final deadline. The project lead must confirm that date and any presentation or live-deployment checkpoint with the lecturer.
 
@@ -210,7 +210,7 @@ The repository records **17 November 2026** as the course final deadline. The pr
 
 A three-day deployment goal may be used as a planning target only after the team confirms the VPS, domain, application source, PostgreSQL readiness and responsible owners. It is not a guarantee that every feature will be production-ready within three days. Prioritize a safe, testable release over an unverified launch.
 
-## 9. Quality assurance and acceptance
+## 10. Quality assurance and acceptance
 
 - Derive test cases from SRS requirement IDs.
 - Test backend authorization independently of UI visibility.
@@ -226,7 +226,7 @@ A three-day deployment goal may be used as a planning target only after the team
 - Record environment, build/commit, steps, expected result, actual result and evidence for each test.
 - Block release on unresolved critical security, data-loss, authorization or verification-integrity defects.
 
-## 10. Repository and change management
+## 11. Repository and change management
 
 1. Keep `main` protected by team review practice; do not push directly to it.
 2. Use focused branches and pull requests linked to GitHub Issues.
@@ -239,7 +239,7 @@ A three-day deployment goal may be used as a planning target only after the team
 9. Update README, API, architecture, data model, wireframes and user guide when implementation behavior changes.
 10. Record scope changes, decision owner, reason, impact, affected requirements and approval.
 
-## 11. Risks and mitigations
+## 12. Risks and mitigations
 
 | Risk | Impact | Mitigation / response |
 |---|---|---|
@@ -256,7 +256,7 @@ A three-day deployment goal may be used as a planning target only after the team
 | Team integration conflicts | Rework and delayed delivery | Shared contracts, small PRs, review and integration tests |
 | Backup not restorable | Irrecoverable data loss | Test database and file restore together before release |
 
-## 12. Communication and progress reporting
+## 13. Communication and progress reporting
 
 Each workstream reports:
 - Completed work and links to commits/PRs.
@@ -268,7 +268,7 @@ Each workstream reports:
 
 The project lead maintains the shared status in GitHub Issues and updates this plan when approved changes affect scope, schedule, ownership or risk.
 
-## 13. Open decisions
+## 14. Open decisions
 
 The following must be confirmed rather than guessed:
 - Final hosting provider, VPS capacity, costs and domain ownership.
@@ -282,7 +282,7 @@ The following must be confirmed rather than guessed:
 - Contact destination displayed on the homepage.
 - Final release date, acceptance authority and license decision.
 
-## 14. Approval
+## 15. Approval
 
 | Reviewer | Name / role | Status | Date / evidence |
 |---|---|---|---|
