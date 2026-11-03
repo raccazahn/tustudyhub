@@ -74,7 +74,7 @@ Creates quiz drafts from approved course/syllabus context using an AI provider, 
 
 Supports eligible previously synchronized content and explicitly permitted queued actions. Sync requires retry, idempotency, conflict handling, account isolation and clear pending/failed/synchronized states. The server remains authoritative.
 
-### 3.8 Audit Records
+### 3.13 Audit Records
 
 Records important security and workflow events where required, including relevant review decisions, publication changes, revocations, and administrative actions. Logs must not contain passwords or authentication tokens.
 
