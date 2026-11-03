@@ -3,7 +3,7 @@
 
 **Course:** System Design · **Final deadline:** 17 November 2026  
 **Repository:** [raccazahn/tustudyhub](https://github.com/raccazahn/tustudyhub)  
-**Status:** Planning and requirements  
+**Status:** Planning, requirements and implementation alignment  
 **Methodology:** Agile is proposed, pending team confirmation.  
 **Proposed stack:** Python + FastAPI, PostgreSQL, HTML, CSS and JavaScript; final choices must be confirmed and justified.
 
@@ -20,7 +20,7 @@ Also required: accounts and roles, documented public API, installable phone-frie
 
 | Document | Purpose |
 |---|---|
-| [Project charter](docs/planning/PROJECT_CHARTER.md) | Purpose, scope, constraints and decisions |
+| [Project Plan](docs/planning/PROJECT_PLAN.md) | Scope, work breakdown, milestones, roles, risks, quality and change control |
 | [Team roles and task plan](docs/planning/TEAM_AND_TASK_PLAN.md) | Roles and individual evidence |
 | [Backlog and weekly deliverables](docs/planning/BACKLOG_AND_DELIVERABLES.md) | Priority tasks, dates and acceptance checks |
 | [Personal task plan template](docs/planning/PERSONAL_TASK_PLAN_TEMPLATE.md) | Individual graded task plan |
