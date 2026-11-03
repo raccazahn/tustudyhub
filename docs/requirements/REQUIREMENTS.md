@@ -253,7 +253,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 
 **FR-064 — Offline access:** Users shall be able to access previously synchronized eligible content offline within the platform's security boundaries. The application shall identify cached content and its last synchronization state.
 
-**FR-065 — Offline restrictions (conditional):** If offline reading is implemented, restricted documents and protected personal information shall not be cached for offline access. The interface shall communicate when offline actions cannot be synchronized.
+**FR-065 — Offline security and synchronization:** Offline data shall be limited to eligible content and isolated by authenticated account. Restricted documents, administrative records and protected personal information shall not be placed in unprotected caches. Permitted offline actions shall be queued with retry, idempotency and conflict handling; server-authoritative actions shall remain pending until confirmed by the server.
 
 **FR-066 — Notifications:** The system shall provide persistent in-app notifications for supported events and configured delivery channels where enabled. Browser push may be offered where supported and permitted by user settings.
 
@@ -395,7 +395,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 - Internet availability may be unreliable for some users.
 - Production deployment depends on selecting a hosting provider, domain and backup arrangement.
 - External email or push notifications depend on the selected providers and user permissions.
-- Course offerings and enrollment management depend on explicit team approval if they are to be included.
+- Full academic-calendar management, course offerings and student enrollment remain outside the first-release scope unless formally approved through change control.
 - Some features depend on the team confirming permissions, retention rules and institutional policies.
 - Interview findings and team decisions must be documented accurately; unconfirmed assumptions shall not be presented as approved requirements.
 
@@ -405,7 +405,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 2. Which hosting provider, domain registrar and file-storage arrangement will be used, and what are the costs?
 3. What are the maximum file sizes and supported image/photo formats?
 4. What are the retention periods for accounts, papers, audit records and deleted content?
-5. Will the first release include academic-calendar management, term-specific course offerings and student enrollment?
+5. Full academic-calendar management, term-specific course offerings and student enrollment are outside the baseline scope; any proposed addition requires formal scope approval. Which limited academic metadata is required for course organization?
 6. What are the precise basic-access features for pending or unapproved accounts?
 7. Which role approves each document category, and what are the final state-transition rules?
 8. What public distribution and indexing permissions apply to submitted academic materials?
