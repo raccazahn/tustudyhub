@@ -20,6 +20,14 @@
 | Quizzes | MCQ quiz management | Authorized create/manage; list/read |
 | Quiz attempts | Submit answers and receive score | Submit/view score history |
 | Reports | Flag incorrect/prohibited content | Create report; authorized review |
+| Ratings/reviews | Resource feedback | Create/update own rating/review; authorized moderation |
+| Notifications | Persistent event notifications | List/read/update notification state; preferences |
+| Academic Q&A | Course-related questions and answers | Create/list/respond/report; moderation |
+| Feedback | User-submitted platform feedback | Submit; admin triage and status management |
+| Analytics | Administrative metrics | Permission-checked reports and aggregates |
+| Academic structure | Colleges, departments and courses | Admin CRUD with parent-child validation |
+| AI quiz generation | Draft generation and validation | Authorized draft request; validate; reviewer approval |
+| Offline sync | Client synchronization | Sync state, queued-action reconciliation and conflict handling |
 | API clients | External client access | Only if selected and implemented |
 
 ## Error shape proposal
