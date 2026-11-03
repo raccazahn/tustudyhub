@@ -1,5 +1,5 @@
 # TuStudyHub
-### Open Student Past Papers & Library Platform
+### Learn • Share • Verify — Tertiary Academic Resource & Verification Platform
 
 **Course:** System Design · **Final deadline:** 17 November 2026  
 **Repository:** [raccazahn/tustudyhub](https://github.com/raccazahn/tustudyhub)  
