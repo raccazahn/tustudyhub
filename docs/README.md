@@ -1,6 +1,6 @@
 # Documentation Index
 
-- `planning/` — charter, team roles, backlog, weekly and final checklists.
+- `planning/` — project plan, team roles, backlog, weekly and final checklists.
 - `requirements/` — requirements, user stories and interview guide.
 - `design/` — technology decisions, SDD, architecture and data model.
 - `api/` — API resource and endpoint contract draft.
