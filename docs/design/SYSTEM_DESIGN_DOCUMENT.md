@@ -139,19 +139,19 @@ The current recommendations are recorded in [TECHNOLOGY_DECISIONS.md](TECHNOLOGY
 
 | Area | Recommendation | Status |
 |---|---|---|
-| Backend | Python + FastAPI | Pending team confirmation |
-| Database | PostgreSQL | Pending team confirmation |
-| Database access and migrations | SQLAlchemy + Alembic | Pending team confirmation |
-| Frontend | HTML, CSS, JavaScript | Pending team confirmation |
+| Backend | Existing TypeScript server | Framework/runtime verification pending |
+| Database | PostgreSQL | Required target; not connected to active runtime per Stage 1 audit |
+| Database access and migrations | Existing adapter/migration approach to be inspected | Pending implementation review |
+| Frontend | React + TypeScript | Reported by Stage 1 audit; verify package/source |
 | API | REST/JSON under `/api/v1/` | Required design target; exact contract pending |
 | PWA | Web app manifest and service worker | Required; implementation plan pending |
-| API documentation | OpenAPI and interactive documentation | Recommended with FastAPI |
-| Tests | pytest + HTTPX | Pending team confirmation |
-| Python code quality | Ruff | Pending team confirmation |
+| API documentation | OpenAPI-compatible contract | Tooling and generated specification pending |
+| Tests | Existing project test tooling to be inspected | Not yet verified |
+| Build tooling | Vite / TypeScript compiler | Reported by audit; checks not run because dependencies were absent |
 | Collaboration | GitHub Issues, branches, reviewed pull requests | Confirm team/lecturer expectations |
 | Hosting | Linux VPS, domain, HTTPS, Cloudflare-managed DNS | Provider, cost, owner, and setup pending |
 
-The proposed stack follows the project proposal without adding a separate frontend framework unnecessarily. Django REST Framework and React with TypeScript remain alternatives if the team identifies a clear need. Separate microservices are not recommended for the first release.
+The current application workspace is reported to contain React/TypeScript frontend code and a TypeScript server with Vite tooling. Preserve that application rather than adding a second frontend or switching to the older proposed Python/FastAPI stack. Confirm exact framework and versions from the application's package manifest before finalizing this design. Separate microservices are not recommended for the first release.
 
 The stack must not be described as approved until confirmed. Technology selection alone does not guarantee security, performance, accessibility, or offline operation; these qualities require implementation and tests.
 
@@ -166,7 +166,7 @@ The detailed ERD belongs in [DATA_MODEL.md](DATA_MODEL.md). The following entity
 - **Documents:** Paper, PaperVersion, PaperFile, review decision/history, and verification record/token.
 - **Quizzes:** Quiz, QuizVersion, QuizQuestion, QuizChoice, and QuizAttempt.
 - **Moderation:** Report, restriction/removal decision, appeal, and AuditLog.
-- **Supporting records:** Notification and API client/scope records where required. Rating and Tag are included in the SRS. LibraryItem remains outside the first release unless scope changes.
+- **Supporting records:** Notification, rating/review, feedback, Q&A, analytics aggregates, sync metadata and API client/scope records where required. LibraryItem remains outside the first release unless the SRS is changed.
 
 ### 5.2 Relationships and integrity
 
