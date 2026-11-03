@@ -27,31 +27,31 @@ The platform must work on mobile devices and be designed for users with limited 
 - Administrative dashboard and agreed basic reports.
 - Testing, security, deployment, backup and recovery requirements.
 
-### 1.2 Optional or subject to team confirmation
+### 1.2 Required supporting capabilities
 
-The following are not mandatory for the first release unless the team and lecturer explicitly approve them:
+The following capabilities are part of the approved product scope and shall not be treated as optional extras:
 
-- Full student enrollment management, including add/drop, enrollment deadlines and exceptions.
-- Formal appeals workflows.
-- Document version history beyond the review and decision records needed for traceability.
-- Automated duplicate detection and duplicate warnings.
-- Ratings and reputation features.
-- Advanced moderation queues, appeals and extended moderation tools.
-- In-app, email and browser-push notification services beyond essential interface feedback.
-- Saved offline reading and advanced offline synchronization.
-- Advanced analytics and expanded administrative reports.
-- Additional academic-calendar management beyond what the approved course catalogue requires.
+- Resource ratings and reviews, with moderation and anti-abuse controls.
+- Persistent in-app notifications and configured delivery channels, with user preferences and failure handling.
+- Advanced, role-restricted administrative analytics.
+- Academic Q&A with reporting and moderation.
+- Full offline capability within defined security boundaries: cached eligible content, queued permitted actions, retry/idempotency, synchronization and conflict handling. Server-authoritative actions must not be falsely presented as completed while offline.
+- Academic structure management using colleges, departments and courses.
+- Hybrid AI-assisted quiz generation using AI for draft creation, deterministic validation and syllabus relevance checks, and lecturer/authorized reviewer approval before publication.
+- User feedback submission and administrative review/triage.
+- Shared backend API and PostgreSQL source of truth for web, desktop-installed PWA and Android-installed PWA clients.
+- Visitor/read-only access restrictions enforced by the backend as well as the frontend.
+- Professional homepage contact entry using a verified configured contact destination.
 
-Essential security controls, review decisions, access restrictions and audit records remain mandatory even when advanced moderation features are optional.
+These features require requirement IDs, data-model support, API contracts, role rules, acceptance tests and operational documentation. Their inclusion does not mean they are already implemented.
 
 ### 1.3 Out of scope for the first release
 
-- Live or current examination distribution.
-- Student grades and private academic records from institutional systems.
-- Payment processing.
-- Q&A forums and worked-solution communities.
-- SMS/WhatsApp notification delivery.
-- Full institutional student information system integration.
+- Full institutional student information system, including admissions, official grades, private institutional records or integration with university systems.
+- Live/current examination distribution.
+- Payment processing unless separately approved.
+- Replacing institutional systems or treating the platform as the official source of student enrollment or grades.
+- Unmoderated public access to private academic materials or internal administrative records.
 
 ## 2. Stakeholders and User Roles
 
@@ -270,6 +270,32 @@ Approval for academic study shall not automatically grant permission for unrestr
 **FR-071 — Audit protection:** Audit records shall be access-controlled and protected against unauthorized modification or disclosure.
 
 **FR-072 — Health monitoring:** The system shall provide a health-check mechanism and record relevant failures. Administrative alerts shall be supported where monitoring is configured.
+**FR-073 — Visitor read-only access:** Visitors without an authenticated account shall be limited to explicitly public read-only pages and public verification. Visitors shall not upload, download protected resources, take quizzes, submit ratings/reviews, post Q&A, submit protected feedback or perform other protected mutations. The backend shall enforce these restrictions on every relevant endpoint and file route.
+
+**FR-074 — Ratings and reviews:** Authenticated users with eligible account status shall be able to rate and review eligible resources. The system shall prevent unauthorized or abusive submissions and provide moderation/reporting controls. Ratings shall not replace academic approval or verification.
+
+**FR-075 — Notifications:** The system shall persist notifications for supported events, provide authorized users with their notification state and preferences, and record delivery outcomes for configured channels. Failure to deliver an external notification shall not silently lose the underlying event.
+
+**FR-076 — Academic Q&A:** Authenticated users with eligible account status shall be able to participate in course-related academic questions and answers. The system shall support reporting, moderation and permission-controlled management. Private information and prohibited content shall be restricted.
+
+**FR-077 — Advanced analytics:** Authorized administrators shall be able to view expanded platform analytics, including agreed usage, resource, quiz and moderation measures. Analytics shall apply role-based access, data minimization and aggregation appropriate to the information displayed.
+
+**FR-078 — Hybrid AI quiz generation:** Authorized lecturers or quiz authors shall be able to request AI-assisted quiz drafts using approved course/syllabus context. Generated output shall pass deterministic schema, option-count, answer-key, duplicate and relevance validation. AI-generated quizzes shall remain drafts until reviewed and approved by an authorized lecturer or designated reviewer. AI output shall never be auto-published solely because generation succeeded.
+
+**FR-079 — User feedback:** Users shall be able to submit feedback through an approved interface. Authorized administrators shall be able to categorize, review, triage and update feedback status while keeping internal administrative notes private.
+
+**FR-080 — Academic hierarchy:** Administrators shall be able to manage colleges, departments and courses with valid parent-child relationships. The system shall reject invalid associations and preserve referential integrity when records are changed or deactivated.
+
+**FR-081 — Shared data source:** Web, desktop-installed PWA and Android-installed PWA clients shall use the same backend API and central PostgreSQL database as the authoritative data source. Client-side caches shall not become independent authoritative databases.
+
+**FR-082 — Offline synchronization:** The system shall support offline access to eligible previously synchronized content and safely queue explicitly permitted offline actions. It shall provide retry, idempotency and conflict handling, isolate cached data by account, and clearly identify pending, failed and synchronized operations. Actions requiring server authority shall not be represented as completed before server confirmation.
+
+**FR-083 — Homepage contact entry:** The public homepage shall provide a clear contact entry/icon linked to a verified contact destination configured by the project administrators. The application shall not display invented or placeholder contact details as real contact information.
+
+**FR-084 — Persistent runtime data:** Application data required across sessions and restarts shall be persisted in the configured PostgreSQL database and approved persistent file storage. Production operation shall not silently fall back to an in-memory store.
+
+**FR-085 — Framework continuity:** The frontend shall use the framework selected by the actual application architecture. If the existing application is already implemented in React, the team shall preserve and improve that React application rather than introducing a duplicate frontend or unnecessary framework migration.
+
 ## 4. Non-Functional Requirements
 
 **NFR-001 — Security:** Passwords shall be stored using an appropriate password-hashing algorithm. Plain-text passwords shall never be stored.
@@ -383,7 +409,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 6. What are the precise basic-access features for pending or unapproved accounts?
 7. Which role approves each document category, and what are the final state-transition rules?
 8. What public distribution and indexing permissions apply to submitted academic materials?
-9. Will document version history, automated duplicate warnings, ratings, formal appeals, notifications or offline reading be included?
+9. What precise moderation, rating/review, notification, Q&A, analytics, feedback, AI quiz-generation and offline-sync rules must be configured?
 10. Which numeric performance targets and load-test conditions will be adopted?
 11. Which email and optional browser-push services will be used?
 12. What backup schedule, recovery objectives and monitoring arrangements are feasible?
