@@ -161,7 +161,7 @@ Full academic-calendar management, term-specific course offerings, enrollment re
 
 **FR-025 — Version review (conditional):** If document versioning is enabled, a new version shall be reviewed before becoming the approved current version. An unapproved update shall not silently replace the currently approved version.
 
-**FR-026 — Ratings (optional):** If approved and implemented, users may rate eligible materials. Ratings shall not replace formal review or verification status.
+**FR-026 — Ratings and reviews:** Eligible authenticated users shall be able to rate and review eligible materials under the platform's moderation and anti-abuse rules. Ratings and reviews shall not replace formal review or verification status.
 
 **FR-027 — Basic review status:** Users shall be shown appropriate publication or availability status for materials they are permitted to view. Internal moderation notes and restricted information shall remain private.
 
@@ -251,11 +251,11 @@ Approval for academic study shall not automatically grant permission for unrestr
 
 **FR-063 — Low-bandwidth operation:** Pages and assets shall be designed to minimize unnecessary data transfer and remain usable on slower connections.
 
-**FR-064 — Offline reading (optional):** If approved and implemented, users may save explicitly selected eligible public materials for offline reading where technically supported.
+**FR-064 — Offline access:** Users shall be able to access previously synchronized eligible content offline within the platform's security boundaries. The application shall identify cached content and its last synchronization state.
 
 **FR-065 — Offline restrictions (conditional):** If offline reading is implemented, restricted documents and protected personal information shall not be cached for offline access. The interface shall communicate when offline actions cannot be synchronized.
 
-**FR-066 — Notifications (optional):** If approved and implemented, the system may support in-app or email notifications for applicable events. Browser push notifications may be offered where supported and permitted by user settings.
+**FR-066 — Notifications:** The system shall provide persistent in-app notifications for supported events and configured delivery channels where enabled. Browser push may be offered where supported and permitted by user settings.
 
 **FR-067 — Public indexing:** Public course pages and eligible approved materials may be indexed by search engines according to publication permissions and visibility settings.
 
@@ -358,7 +358,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 - [ ] Authorized users can search, filter and download eligible documents.
 - [ ] Reports can be submitted and reviewed by authorized personnel.
 - [ ] Review decisions retain the responsible account, timestamp and reason.
-- [ ] Duplicate warnings and document version history are required only if their optional features are approved.
+- [ ] Ratings/reviews are permission-checked, moderated where necessary and do not change formal verification status.
 
 ### 5.4 Quizzes
 
@@ -386,7 +386,7 @@ Approval for academic study shall not automatically grant permission for unrestr
 - [ ] Pages and assets minimize unnecessary data transfer on slower connections.
 - [ ] Health checks, backups and restoration procedures are documented and tested before production release.
 - [ ] The deployed application uses HTTPS.
-- [ ] Offline reading and notifications are required only if their optional features are approved.
+- [ ] Offline synchronization, pending-action visibility, retry and account isolation are tested; notifications persist and respect user preferences.
 
 ## 6. Constraints and Dependencies
 
