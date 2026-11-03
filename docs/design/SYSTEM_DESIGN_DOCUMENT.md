@@ -17,7 +17,7 @@ The design translates the requirements in [REQUIREMENTS.md](../requirements/REQU
 
 ### 1.2 Goals and scope
 
-The first release covers account management and permissions, academic calendar and course offerings, student enrollment, PDF academic materials, document review and version history, search, quizzes, moderation and appeals, QR verification, a REST API, notifications, administration reports, and safe offline reading of explicitly saved public materials.
+The first release covers account management and permissions, visitor read-only access, college/department/course hierarchy, PDF and approved image academic materials, document review, search, authorized downloads, quizzes, ratings/reviews, moderation, QR verification, a versioned REST API, notifications, academic Q&A, feedback, privacy-aware analytics, hybrid AI-assisted quiz generation with lecturer approval, and secure offline access/synchronization for eligible data. Full student enrollment and institutional student-record management are out of scope.
 
 Live/current examinations, private grades and academic records, payments, Q&A forums, SMS/WhatsApp, and advanced analytics are outside the current scope unless the team formally changes it.
 
@@ -65,16 +65,21 @@ This approach avoids the additional deployment and monitoring overhead of micros
 
 ### 3.2 Logical components
 
-1. **PWA client:** responsive pages, account flows, search, enrollment, quizzes, authorized administration screens, and safe offline reading.
+1. **PWA client:** responsive pages, account flows, search, college/department/course catalogue, quizzes, authorized administration screens, and secure offline synchronization.
 2. **API layer:** versioned REST/JSON routes under `/api/v1/`, request validation, consistent errors, pagination, and API documentation.
 3. **Identity and access:** registration, sign-in, recovery, role checks, contributor applications, account status, and appeals.
-4. **Academic module:** academic calendar, courses, course offerings, and enrollment.
+4. **Academic structure module:** colleges, departments and courses.
 5. **Document module:** PDF upload, metadata, duplicate warnings, version history, search, and authorized downloads.
 6. **Review and moderation:** review decisions, rejection reasons, reports, restrictions, appeals, restoration decisions, and audit events.
 7. **Quiz module:** quiz authoring, review, versioning, questions, choices, attempts, and scoring.
 8. **Verification module:** stable paper identifiers, non-guessable tokens, public verification, and revocation history.
 9. **Notification module:** in-app and email notifications, with browser push where supported and configured.
-10. **Operations:** logs, health checks, automated tests, migrations, backup/restore, and deployment checks.
+10. **Notifications and feedback:** persistent in-app notifications, configured delivery channels, user feedback submission and administrative triage.
+11. **Academic Q&A:** course-related questions and answers with reporting and moderation.
+12. **Analytics:** privacy-aware, role-restricted administrative reporting.
+13. **AI quiz assistance:** draft generation, deterministic validation, syllabus relevance checks and lecturer approval.
+14. **Offline synchronization:** eligible local content, queued permitted actions, retry/idempotency, conflict resolution and account-isolated caches.
+15. **Operations:** logs, health checks, automated tests, migrations, backup/restore, and deployment checks.
 
 ### 3.3 Logical architecture diagram
 
@@ -86,7 +91,7 @@ flowchart TD
     PWA[Responsive installable PWA]
     API[REST API /api/v1/]
     AUTH[Identity and authorization]
-    ACADEMIC[Academic calendar, courses, offerings, enrollment]
+    ACADEMIC[Colleges, departments, courses]
     DOCS[PDF library, versions, search and download]
     REVIEW[Review, moderation, reports and appeals]
     QUIZ[Quiz versions, attempts and scoring]
@@ -134,19 +139,19 @@ The current recommendations are recorded in [TECHNOLOGY_DECISIONS.md](TECHNOLOGY
 
 | Area | Recommendation | Status |
 |---|---|---|
-| Backend | Python + FastAPI | Pending team confirmation |
-| Database | PostgreSQL | Pending team confirmation |
-| Database access and migrations | SQLAlchemy + Alembic | Pending team confirmation |
-| Frontend | HTML, CSS, JavaScript | Pending team confirmation |
+| Backend | Existing TypeScript server | Framework/runtime verification pending |
+| Database | PostgreSQL | Required target; not connected to active runtime per Stage 1 audit |
+| Database access and migrations | Existing adapter/migration approach to be inspected | Pending implementation review |
+| Frontend | React + TypeScript | Reported by Stage 1 audit; verify package/source |
 | API | REST/JSON under `/api/v1/` | Required design target; exact contract pending |
 | PWA | Web app manifest and service worker | Required; implementation plan pending |
-| API documentation | OpenAPI and interactive documentation | Recommended with FastAPI |
-| Tests | pytest + HTTPX | Pending team confirmation |
-| Python code quality | Ruff | Pending team confirmation |
+| API documentation | OpenAPI-compatible contract | Tooling and generated specification pending |
+| Tests | Existing project test tooling to be inspected | Not yet verified |
+| Build tooling | Vite / TypeScript compiler | Reported by audit; checks not run because dependencies were absent |
 | Collaboration | GitHub Issues, branches, reviewed pull requests | Confirm team/lecturer expectations |
 | Hosting | Linux VPS, domain, HTTPS, Cloudflare-managed DNS | Provider, cost, owner, and setup pending |
 
-The proposed stack follows the project proposal without adding a separate frontend framework unnecessarily. Django REST Framework and React with TypeScript remain alternatives if the team identifies a clear need. Separate microservices are not recommended for the first release.
+The current application workspace is reported to contain React/TypeScript frontend code and a TypeScript server with Vite tooling. Preserve that application rather than adding a second frontend or switching to the older proposed Python/FastAPI stack. Confirm exact framework and versions from the application's package manifest before finalizing this design. Separate microservices are not recommended for the first release.
 
 The stack must not be described as approved until confirmed. Technology selection alone does not guarantee security, performance, accessibility, or offline operation; these qualities require implementation and tests.
 
@@ -157,18 +162,18 @@ The detailed ERD belongs in [DATA_MODEL.md](DATA_MODEL.md). The following entity
 ### 5.1 Entity groups
 
 - **Identity:** User, role/permission assignment or equivalent, contributor application, account-status history, and appeals.
-- **Academic structure:** academic calendar or term, Course, CourseOffering, and Enrollment. A reusable course must be distinct from its term-specific offering and a student's enrollment.
+- **Academic structure:** College, Department and Course with validated parent-child relationships. Full course offerings and student enrollment are outside the first-release scope.
 - **Documents:** Paper, PaperVersion, PaperFile, review decision/history, and verification record/token.
 - **Quizzes:** Quiz, QuizVersion, QuizQuestion, QuizChoice, and QuizAttempt.
 - **Moderation:** Report, restriction/removal decision, appeal, and AuditLog.
-- **Supporting records:** Notification and API client/scope records where required. Rating and Tag are included in the SRS. LibraryItem remains outside the first release unless scope changes.
+- **Supporting records:** Notification, rating/review, feedback, Q&A, analytics aggregates, sync metadata and API client/scope records where required. LibraryItem remains outside the first release unless the SRS is changed.
 
 ### 5.2 Relationships and integrity
 
 1. A user may submit multiple papers; each paper records its uploader.
 2. A paper may have multiple versions. Each version references its stored file metadata and retains its review history.
 3. Papers link to the relevant course offering where applicable, with exceptions defined for materials not tied to a specific offering.
-4. Enrollment links a student to a specific course offering. Enrollment rules and add/drop windows remain open until agreed.
+4. Each Department belongs to a College, and each Course belongs to a Department. The database must enforce valid parent-child relationships.
 5. Review decisions record the reviewer, outcome, reason, and time. Authors must not approve their own submissions or revisions.
 6. Each quiz version contains its own questions and choices. Every attempt references the exact version taken.
 7. Verification identifiers must be unique and tokens non-guessable. Public endpoints return limited metadata.
@@ -189,12 +194,14 @@ The API contract is maintained in [API_SPECIFICATION.md](../api/API_SPECIFICATIO
 
 - Authentication, recovery, account status, and users.
 - Contributor applications, role administration, and appeals.
-- Academic calendar, courses, course offerings, and enrollment.
+- College, department and course catalogue management.
 - Papers, versions, uploads/downloads, reviews, and search.
 - Public verification lookup and authorized status changes.
 - Quizzes, versions, questions, choices, attempts, and results.
 - Reports, restrictions, moderation decisions, and audit history.
-- Notifications and administrator reports.
+- Notifications, academic Q&A, user feedback, ratings/reviews and privacy-aware administrative analytics.
+- Hybrid AI-assisted quiz draft generation, deterministic validation and lecturer approval.
+- Secure offline access and synchronization for eligible data.
 - External API clients and scopes if selected.
 
 ### 6.2 Authentication and authorization
@@ -275,7 +282,7 @@ The first administrator account must be provisioned through a controlled process
 
 The system is intended for phone-first use and inconsistent connectivity. Favor lightweight responsive pages, compressed assets, pagination, explicit loading/error states, and retryable uploads. Failed uploads must not be reported as successful, and retries should avoid accidental duplicate submissions.
 
-Offline reading is limited to explicitly saved eligible public materials. Restricted/private content must not be cached. The interface should explain that saved copies may be outdated and synchronization requires connectivity. Offline support does not mean verification, enrollment changes, quiz submissions, or moderation actions can safely complete without a connection.
+Offline capability must cover previously synchronized eligible content and only those actions explicitly designed for safe queuing. Restricted/private content and privileged administrative data must not be placed in unprotected caches. Queued actions require idempotency, retry, conflict handling and clear pending/failed/synchronized states. Server-authoritative operations such as verification status changes, approvals and other privileged actions must not be represented as completed before server confirmation. PostgreSQL remains the central source of truth.
 
 Provide health checks, structured logs, and alerts where supported. Coordinate database and file backups so restored records do not point to missing files. Test restoration, not only backup creation.
 
@@ -287,7 +294,7 @@ The detailed plan is in [TEST_STRATEGY.md](../testing/TEST_STRATEGY.md). The tes
 
 - **Unit tests:** validation, permission checks, state transitions, scoring, and token validation.
 - **API integration tests:** database operations, authentication, authorization, pagination, errors, upload rules, and version relationships.
-- **End-to-end tests:** registration/recovery, enrollment, upload/review, search/download, quiz attempts/results, reports/appeals, and QR verification/revocation.
+- **End-to-end tests:** registration/recovery, visitor read-only restrictions, academic hierarchy, upload/review, authorized search/download, quiz attempts/results, ratings/reviews, notifications, Q&A, feedback, analytics permissions, AI quiz validation/approval, offline synchronization, and QR verification/revocation.
 - **Security tests:** privilege escalation, unauthorized downloads, upload validation, public-data leakage, token guessing resistance, and unsafe errors.
 - **Usability/accessibility tests:** responsive layouts, keyboard access, clear errors, and low-bandwidth behavior.
 - **Deployment/recovery tests:** HTTPS, health checks, migrations, backup restoration, and file/database consistency.
@@ -322,7 +329,7 @@ Do not deploy private student information or copyrighted materials without autho
 | Interview evidence incomplete or not attached | User needs not yet evidenced | Document interviews with at least five classmates |
 | Authentication and token lifecycle undefined | Security depends on these decisions | Define expiry, recovery, revocation, and storage |
 | File limits, storage, and scanning undecided | Affects safe uploads and capacity | Agree limits and test validation/recovery |
-| Enrollment/add-drop policy undecided | Affects permissions and enrollment states | Agree rules and semester boundaries |
+
 | Basic access while approval is pending needs detail | Affects user experience | Define allowed and protected actions |
 | Publication rights and review boundaries need confirmation | Approval may not authorize public distribution | Define rights, visibility, and review authority |
 | Moderation restoration and retention undecided | Affects privacy and evidence preservation | Agree restriction, appeal, restoration, and deletion |
@@ -337,8 +344,8 @@ These are open items, not claims that all work is blocked. Assign owners and due
 
 The following sequence is a planning recommendation. Confirm ownership and dates in the team plan.
 
-1. **Foundation and library:** repository/environment, authentication, permissions, academic structure and enrollment, PDF upload/storage, review/version history, search, verification, and audit.
-2. **Learning and moderation:** quizzes and attempts, ratings/reports, restrictions and appeals, contributor applications, notifications, and administration reports.
+1. **Foundation and library:** repository/environment, authentication, permissions, college/department/course hierarchy, PDF/image upload and storage, review, search, verification, and audit.
+2. **Learning and moderation:** quizzes and attempts, ratings/reviews, Q&A, reports, restrictions, contributor workflows, notifications, feedback and analytics.
 3. **Production readiness:** PWA installation/offline behavior, publication/indexing rules, accessibility, performance tests, HTTPS deployment, backup/restore, monitoring, and security verification.
 
 Adjust the sequence to match lecturer assessment requirements, dependencies, and team capacity.

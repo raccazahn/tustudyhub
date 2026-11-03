@@ -1,54 +1,44 @@
 # Technology Decisions
 
-## Status
+**Status:** Working baseline based on the application audit; final decisions require repository inspection and team approval.
 
-The project team has selected the technology stack listed below. Implementation details and operational decisions that remain unresolved are tracked separately and must be finalized before the relevant features are implemented or deployed.
+## Observed application baseline
 
-## Recommended stack
-- Backend: Python + FastAPI.
-- Database: PostgreSQL.
-- Database access: SQLAlchemy.
-- Database migrations: Alembic.
-- Frontend: HTML, CSS and JavaScript.
-- Application: responsive, installable Progressive Web App (PWA), using a web app manifest and service worker.
-- API: REST/JSON under `/api/v1/`.
-- API documentation: FastAPI-generated OpenAPI schema and interactive Swagger UI.
-- Testing: pytest and HTTPX for automated backend/API tests.
-- Python code quality: Ruff.
-- Version control and collaboration: GitHub Issues, branches and reviewed pull requests.
-- Hosting: Linux VPS, registered domain, HTTPS and Cloudflare-managed DNS, as required by the concept paper.
+The Copilot Stage 1 report describes an existing TypeScript application with React-style frontend source and Vite build tooling. The exact backend framework, runtime versions and package scripts must be confirmed from the actual application `package.json` and source before being recorded as final. The current workspace could not run TypeScript or production-build checks because dependencies were not installed.
 
-## Rationale
-This stack follows the existing project proposal and supports an API-first system without introducing a separate frontend framework unnecessarily. FastAPI provides OpenAPI documentation, PostgreSQL supports relational academic data, and the PWA approach supports mobile access through a browser and installation on compatible devices.
+The audit reports that the active runtime uses an in-memory store. PostgreSQL is the intended persistent database but is not yet connected to the running application. This is a production blocker, not a completed integration.
 
-The stack alone does not guarantee security, performance or offline operation. Those qualities must be designed and verified through implementation and tests.
+## Current technology direction
 
-## Alternatives considered
-- Django REST Framework: offers an integrated framework and administration features, but switching would depart from the existing FastAPI proposal without a demonstrated need.
-- React with TypeScript: may help organize a larger interactive frontend, but introduces additional tooling and learning overhead. Reconsider only if the team identifies a clear requirement that justifies it.
-- Separate microservices: not recommended for the initial release because the required features can be organized as modules in one backend application.
-
-## Decision register
-
-| Decision | Recommendation | Status |
+| Area | Current direction | Status |
 |---|---|---|
-| Backend | Python + FastAPI | Selected by team |
-| Database | PostgreSQL | Selected by team |
-| Database access and migrations | SQLAlchemy + Alembic | Selected by team |
-| Frontend | HTML, CSS and JavaScript | Selected by team |
-| API | REST/JSON under `/api/v1/` | Required design target; exact contract pending |
-| PWA | Manifest and service worker | Required; implementation plan pending |
-| Testing | pytest + HTTPX | Selected by team |
-| Code quality | Ruff |Selected by team |
-| Methodology | Agile with weekly increments and reviewed pull requests | Selected by team |
-| Hosting | Linux VPS + registered domain + HTTPS | Required; provider, cost and setup need research |
+| Frontend | Preserve the existing React + TypeScript application | Reported by audit; verify source and dependencies |
+| Build tooling | Vite | Reported by audit; build not verified in this workspace |
+| Backend | Existing TypeScript server | Framework/runtime details require source inspection |
+| Database | PostgreSQL | Required target; not connected to active runtime |
+| File storage | Persistent server-side storage | Path, permissions and backup strategy to be confirmed |
+| API | Versioned REST/JSON under `/api/v1/` | Required design target; contract review pending |
+| PWA | Manifest, service worker and secure HTTPS origin | App shell reported; full offline sync missing |
+| Hosting | Linux VPS, registered domain and HTTPS | Provider/cost/deployment not yet verified |
+| Collaboration | GitHub Issues, branches and reviewed pull requests | Existing team workflow |
+
+## Engineering decisions and rationale
+
+- Keep one React frontend and one backend API. Do not create a second frontend or migrate frameworks without an approved engineering reason.
+- Use PostgreSQL as the central authoritative store for all clients. Do not use an in-memory fallback for production data.
+- Keep uploaded files in persistent storage and protect every download route with server-side authorization.
+- Treat desktop and Android installed PWAs as clients of the same API and database, not independent applications with separate data stores.
+- Treat offline data as a restricted local cache. Queued mutations need authorization re-checks, idempotency, retries and conflict handling when synchronized.
+- Keep secrets in environment configuration, never in source control or frontend bundles.
 
 ## Decisions still required
-- Confirm the stack and workflow with the team and check the lecturer's requirements.
-- Define the authentication method, password hashing, token/session lifecycle and authorization rules.
-- Decide file storage, upload limits, validation and safe download behavior.
-- Research VPS options, capacity, cost, backups and recovery.
-- Confirm domain/VPS budget and account owner.
-- Confirm CI checks and the required test coverage.
 
-Do not record a pending decision as approved until the responsible people confirm it. Document material changes in the System Design Document.
+1. Confirm the exact backend framework, Node.js version and package scripts from the application source.
+2. Review PostgreSQL schema, migration tool and every runtime query before enabling the database.
+3. Confirm persistent file storage, upload limits and backup/restore process.
+4. Confirm authentication/token lifecycle and role/permission matrix.
+5. Select hosting provider, capacity, cost, monitoring and backup retention.
+6. Define offline data eligibility, cache expiry, queued actions and conflict resolution.
+7. Confirm AI provider/model, privacy handling, API budget and fallback behavior.
+
+Do not describe a proposed technology as implemented until the repository and running system provide evidence.

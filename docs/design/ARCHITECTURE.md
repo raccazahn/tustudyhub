@@ -50,11 +50,31 @@ Supports finding eligible materials by course, keyword, academic year, semester,
 
 Supports multiple-choice quizzes, attempts, automatic marking, and score history. Quiz creation is restricted to lecturers and approved authors, subject to the final permissions policy.
 
-### 3.7 Reporting and Moderation
+### 3.7 Reporting, Feedback and Analytics
 
-Provides a way to report questionable material and allows authorized personnel to review reports and take permitted actions. Advanced moderation queues, appeals, ratings, and reputation features require confirmation if they exceed the agreed release scope.
+Provides moderated reports, user feedback submission and administrative triage, and privacy-aware analytics. Internal notes and sensitive records are restricted to authorized administrators.
 
-### 3.8 Audit Records
+### 3.8 Ratings and Reviews
+
+Supports eligible authenticated users rating and reviewing approved resources. Ratings do not replace formal document approval or verification. Moderation and anti-abuse controls are required.
+
+### 3.9 Notifications
+
+Persists in-app notifications and supports configured delivery channels and user preferences. Delivery failures must be observable and must not erase the underlying event.
+
+### 3.10 Academic Q&A
+
+Supports course-related questions and answers with authenticated participation, reporting and moderation.
+
+### 3.11 AI-Assisted Quiz Authoring
+
+Creates quiz drafts from approved course/syllabus context using an AI provider, followed by deterministic validation and lecturer/authorized reviewer approval. AI output is untrusted until validated and approved.
+
+### 3.12 Offline Synchronization
+
+Supports eligible previously synchronized content and explicitly permitted queued actions. Sync requires retry, idempotency, conflict handling, account isolation and clear pending/failed/synchronized states. The server remains authoritative.
+
+### 3.13 Audit Records
 
 Records important security and workflow events where required, including relevant review decisions, publication changes, revocations, and administrative actions. Logs must not contain passwords or authentication tokens.
 
@@ -102,17 +122,11 @@ The proposed production request path is:
 
 The deployment must include a registered domain managed through Cloudflare, a provisioned VPS, HTTPS, restricted server access, automated database backups, and a tested recovery procedure. The exact VPS size, provider, deployment tooling, and file-storage arrangement belong in the Infrastructure Report and must be supported by evidence.
 
-## 8. Optional and Unconfirmed Components
+## 8. Required Capabilities and Unconfirmed Implementation Decisions
 
-The following must not be treated as guaranteed first-release functionality until the team confirms the scope:
+The SRS requires ratings/reviews, notifications, academic Q&A, user feedback, advanced analytics, hybrid AI quiz generation, academic hierarchy management, visitor read-only restrictions, shared PostgreSQL persistence and secure offline synchronization. These are in scope even where implementation is not yet complete.
 
-- Dedicated search index
-- Notifications and webhooks
-- Advanced moderation queues and appeals
-- Reputation scoring and advanced ratings
-- Full offline document reading
-- Additional mobile or chat clients
-- Container orchestration or a CI/CD pipeline beyond agreed deployment requirements
+The following implementation choices remain subject to technical review: dedicated search index, external notification providers, background-job technology, exact offline cache policy, container orchestration, and CI/CD tooling. These choices must not be confused with whether the product capabilities themselves are required.
 
 ## 9. Review and Acceptance Criteria
 
@@ -124,7 +138,7 @@ The architecture is ready for team review when:
 - [ ] Authentication and authorization boundaries are clear.
 - [ ] Document storage and verification flows are represented.
 - [ ] Security, low-bandwidth behavior, backups, and recovery are addressed.
-- [ ] Optional features are clearly distinguished from required functionality.
+- [ ] Required capabilities are distinguished from implementation choices that remain open.
 - [ ] Technology and infrastructure decisions are documented or marked as pending.
 - [ ] Comfort's diagram has been reviewed by the team and its acceptance recorded.
 
