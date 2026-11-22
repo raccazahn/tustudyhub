@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>TuStudyHub — Learn • Share • Verify</title>
+    <meta name="description" content="Student-focused academic platform to learn, share, and verify academic materials, course documents, and quizzes." />
+    <meta property="og:title" content="TuStudyHub — Learn • Share • Verify" />
+    <meta property="og:description" content="Student-focused academic platform to learn, share, and verify academic materials, course documents, and quizzes." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- PWA & Mobile Web Capabilities -->
+    <meta name="theme-color" content="#8A3E12" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="TuStudyHub" />
+    <meta name="application-name" content="TuStudyHub" />
+    <meta name="msapplication-TileColor" content="#8A3E12" />
+
+    <!-- Icons & Manifest (v1.0.1 for refresh) -->
+    <link rel="manifest" href="/manifest.json?v=1.0.1" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png?v=1.0.1" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1.0.1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1.0.1" />
+
+    <script>
+      // Silence benign dev environment WebSocket disconnects in iframe/proxy environments
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event && event.reason && (
+          (event.reason.message && event.reason.message.includes('WebSocket')) ||
+          (String(event.reason).includes('WebSocket'))
+        )) {
+          event.preventDefault();
+        }
+      });
+    </script>
+  </head>
+  <body class="bg-kaolin-cream text-charcoal-dark antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

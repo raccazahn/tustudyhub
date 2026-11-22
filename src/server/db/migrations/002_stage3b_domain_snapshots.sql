@@ -1,0 +1,29 @@
+ALTER TYPE report_category ADD VALUE IF NOT EXISTS 'COPYRIGHT';
+ALTER TYPE report_category ADD VALUE IF NOT EXISTS 'INACCURATE';
+ALTER TYPE report_category ADD VALUE IF NOT EXISTS 'INAPPROPRIATE';
+ALTER TYPE report_category ADD VALUE IF NOT EXISTS 'DUPLICATE';
+
+ALTER TABLE documents ADD COLUMN IF NOT EXISTS uploader_name VARCHAR(255);
+ALTER TABLE documents ADD COLUMN IF NOT EXISTS uploader_role user_role;
+
+ALTER TABLE document_verifications ADD COLUMN IF NOT EXISTS verified_by_name VARCHAR(255);
+ALTER TABLE document_verifications ADD COLUMN IF NOT EXISTS revoked_by_name VARCHAR(255);
+
+ALTER TABLE document_reviews ADD COLUMN IF NOT EXISTS reviewer_name VARCHAR(255);
+ALTER TABLE document_reviews ADD COLUMN IF NOT EXISTS reviewer_role user_role;
+ALTER TABLE document_reviews ADD COLUMN IF NOT EXISTS feedback_reason TEXT;
+
+ALTER TABLE content_reports ADD COLUMN IF NOT EXISTS document_title VARCHAR(255);
+ALTER TABLE content_reports ADD COLUMN IF NOT EXISTS course_code VARCHAR(32);
+ALTER TABLE content_reports ADD COLUMN IF NOT EXISTS reporter_name VARCHAR(255);
+
+ALTER TABLE quizzes ADD COLUMN IF NOT EXISTS creator_name VARCHAR(255);
+ALTER TABLE quizzes ADD COLUMN IF NOT EXISTS total_questions INTEGER NOT NULL DEFAULT 0;
+
+ALTER TABLE quiz_versions ADD COLUMN IF NOT EXISTS course_code VARCHAR(32);
+ALTER TABLE quiz_versions ADD COLUMN IF NOT EXISTS course_title VARCHAR(255);
+
+ALTER TABLE quiz_attempts ADD COLUMN IF NOT EXISTS quiz_title VARCHAR(255);
+ALTER TABLE quiz_attempts ADD COLUMN IF NOT EXISTS course_code VARCHAR(32);
+
+ALTER TABLE feedback ADD COLUMN IF NOT EXISTS reviewed_by_name VARCHAR(255);

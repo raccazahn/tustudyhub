@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="128" fill="#8A3E12"/>
+  <rect x="32" y="32" width="448" height="448" rx="96" fill="#1C1A17" stroke="#A84D16" stroke-width="4"/>
+  <!-- Book / Knowledge Pages in Kaolin -->
+  <path d="M128 176c48-24 96-24 128 0 32-24 80-24 128 0v168c-48-24-96-24-128 0-32-24-80-24-128 0V176z" fill="#EDE9E2"/>
+  <path d="M256 176v168" stroke="#8A3E12" stroke-width="8" stroke-linecap="round"/>
+  <!-- Verification Seal in Clay 500 & Clay 100 -->
+  <circle cx="256" cy="240" r="44" fill="#C2691D" stroke="#F7E4D0" stroke-width="6"/>
+  <path d="M240 240l12 12 24-24" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Brand Initials TSH -->
+  <text x="256" y="390" font-family="system-ui, sans-serif" font-size="34" font-weight="900" fill="#F7E4D0" text-anchor="middle" letter-spacing="4">TUSTUDYHUB</text>
+  <text x="256" y="420" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#DDD8CF" text-anchor="middle" letter-spacing="3">LEARN • SHARE • VERIFY</text>
+</svg>

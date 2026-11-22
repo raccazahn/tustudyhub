@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-clay-50: #FBF1E6;
+  --color-clay-100: #F7E4D0;
+  --color-clay-400: #D98A3D;
+  --color-clay-500: #C2691D;
+  --color-clay-600: #A84D16;
+  --color-clay-700: #8A3E12;
+
+  --color-kaolin-50: #F7F5F1;
+  --color-kaolin-100: #EDE9E2;
+  --color-kaolin-200: #DDD8CF;
+  --color-kaolin-300: #C4BEB4;
+  --color-kaolin-500: #726B62;
+  --color-kaolin-700: #4A463F;
+  --color-kaolin-900: #1C1A17;
+
+  --color-status-verified: #2D6A4F;
+  --color-status-verified-bg: #E8F5E9;
+  --color-status-pending: #B45309;
+  --color-status-pending-bg: #FEF3C7;
+  --color-status-rejected: #B91C1C;
+  --color-status-rejected-bg: #FEE2E2;
+  --color-status-revoked: #374151;
+  --color-status-revoked-bg: #F3F4F6;
+
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: #F7F5F1;
+  color: #1C1A17;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Custom scrollbars matching Kaolin palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #EDE9E2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4BEB4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #726B62;
+}
