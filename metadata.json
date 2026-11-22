@@ -1,0 +1,6 @@
+{
+  "name": "TuStudyHub",
+  "description": "Student-focused academic platform to learn, share, and verify academic materials, course documents, and quizzes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
