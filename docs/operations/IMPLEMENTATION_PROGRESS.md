@@ -1,69 +1,76 @@
-# TuStudyHub Implementation Progress
+# TuStudyHub Implementation and Deployment Progress
 
-**Last updated:** 2026-11-03
-**Execution mode:** Controlled stages; no destructive changes.
+**Last updated:** 25 November 2026  
+**Purpose:** Current evidence-based status for the project team and course reviewers.
 
-## Stage 1 - Project Audit
+## 1. Executive status
 
-**Status:** Complete for the available workspace copy.
+The application has been deployed to the project VPS and has responded successfully through the Nginx HTTP reverse-proxy path. PostgreSQL is installed and connected, migrations through `008_tu_academic_structure_and_documents` were applied on the VPS, and the health endpoint previously reported PostgreSQL as available.
 
-### Inspected
+The custom domain is not yet confirmed live. The Cloudflare zone reports a nameserver mismatch with the nameservers currently delegated for the registered domain. A DNSSEC DS record is also present at the registry and needs to be reconciled with the authoritative DNS configuration. Cloudflare was contacted on **22 November 2026**; as of this update, the team is still awaiting a case-specific response.
 
-- React/Vite/TypeScript application composition, navigation, auth/PWA contexts, and feature components.
-- Express startup, authentication/authorization middleware, API routes, in-memory database, PostgreSQL stub/schema, document storage, and AI quiz generation.
-- Package scripts/dependencies, environment example, README/deployment instructions, manifest, service worker, and available scripts.
-- Workspace requirements/documentation files, test-file patterns, and Git metadata availability.
+The current blocker is domain DNS/registrar alignment and subsequent HTTPS activation, not a demonstrated need to rebuild the VPS.
 
-### Changed
+## 2. Verified implementation and infrastructure work
 
-- Created [IMPLEMENTATION_AUDIT.md](IMPLEMENTATION_AUDIT.md), documenting implementation evidence, incomplete/missing areas, concrete visitor-policy conflicts, security concerns, test status, and audit limitations.
-- No application source, configuration, database schema, dependency, generated asset, or existing documentation was modified.
+| Area | Recorded evidence/status |
+|---|---|
+| VPS | Ubuntu VPS provisioned and reachable at the project server address. |
+| Application | TuStudyHub deployed under `/var/www/tustudyhub`; application listens on port 3000. |
+| Runtime | Bun installed; production start command is `bun run start`. |
+| Reverse proxy | Nginx installed, active and configured to proxy the domain host to the application on localhost:3000. |
+| Database | PostgreSQL 12 installed; application database and dedicated database role configured. |
+| Migrations | VPS migration registry includes migrations 001–008; migration 008 was successfully applied. |
+| Persistent uploads | Application upload storage is configured under `/var/data/tustudyhub/uploads`. |
+| Health check | `/api/health` returned HTTP 200 and reported PostgreSQL as UP during deployment validation. |
+| External HTTP check | A request using a host override to the VPS IP returned HTTP 200 and the TuStudyHub application HTML. This bypasses public DNS and does not prove that the domain resolves normally. |
+| HTTPS | Not yet activated; certificate issuance must wait until domain DNS is correctly resolved. |
 
-### Files Created
+## 3. Application validation recorded
 
-- `docs/operations/IMPLEMENTATION_AUDIT.md`
-- `docs/operations/IMPLEMENTATION_PROGRESS.md`
+After the PostgreSQL integration work, the development validation record reported lint passing, six automated tests passing, and the production build passing. The Stage 6 visitor-access update also reported lint and build passing, with the security tests passing.
 
-### Files Modified
+These results are historical project validation evidence. Before final release, rerun the checks against the exact commit selected for deployment and record the command, date, commit and result. The production health check is separate from a full end-to-end acceptance test.
 
-- None; the progress log is newly created.
+## 4. Access-control direction
 
-### Database Migrations
+The current release work enforces the visitor read-only policy at the backend for protected document access. Protected operations must be checked server-side; hiding buttons in the interface is not sufficient.
 
-- None created or executed. Runtime is in-memory and no PostgreSQL connection is configured in application code.
+The intended policy is:
+- Visitors can browse only permitted public information.
+- Protected actions require authentication and the appropriate role/permission.
+- Pending, rejected or suspended accounts must not perform protected actions.
+- Administrative provisioning must be controlled; public administrator self-registration is not allowed.
 
-### Checks Executed
+The initial production administrator provisioning and final role-by-role acceptance checks remain outstanding.
 
-- Inspected package scripts and searched for SRS/approved requirements and test files.
-- Attempted `git status` and branch inspection; unavailable because the workspace has no `.git` directory.
-- Ran `npm run lint`; it failed before typechecking because `tsc` is unavailable (dependencies are not installed).
-- Ran `npm run build`; it failed before building because `vite` is unavailable (dependencies are not installed).
-- No application/API/PWA test was run; the discovered PWA script requires a running server.
+## 5. Current blockers and remaining work
 
-### Passed
+1. Obtain Cloudflare's case-specific guidance and reconcile the domain's nameserver delegation and DNSSEC configuration without guessing or making unverified changes.
+2. Confirm public DNS resolution for both the apex domain and `www`.
+3. Activate HTTPS only after DNS points to the intended VPS and validation succeeds.
+4. Complete the controlled first-administrator provisioning process.
+5. Confirm the application runs as a persistent service and starts correctly after a VPS reboot.
+6. Reconcile VPS-only changes with the GitHub `main` branch; the deployment source must be traceable to a reviewed commit.
+7. Run final lint, tests, production build, health checks and browser-based role/workflow tests against the release candidate.
+8. Verify database and uploaded-file backups and perform a restore test.
+9. Add screenshots captured from the actual application to the user guide and complete lecturer/team review.
 
-- Source/configuration audit completed.
-- No runtime test or build is recorded as passed.
+## 6. DNS incident record
 
-### Failed or Blocked
+- **Domain:** `tustudyhub.com`
+- **Registrar:** Cloudflare Registrar
+- **Cloudflare zone status:** Pending, with a nameserver mismatch reported.
+- **Nameservers currently delegated at the registry:** `kyree.ns.cloudflare.com` and `vita.ns.cloudflare.com`.
+- **Nameservers assigned in the pending zone:** `alexis.ns.cloudflare.com` and `uma.ns.cloudflare.com`.
+- **DNSSEC:** A DS record is published at the `.com` registry. The correct active authoritative DNSSEC configuration must be confirmed before changing or removing it.
+- **Support contact:** Initial support email sent 22 November 2026; no case-specific technical resolution had been received by 25 November 2026.
 
-- TypeScript check and production build are blocked on dependency installation.
-- Git branch/status, user modifications, and contribution history cannot be verified in this workspace copy.
-- No approved SRS or design/API/data-model documentation was found.
-- No PostgreSQL runtime or database service was available to verify persistence.
+Do not change nameserver delegation, delete the zone, or alter the DS record until Cloudflare confirms the correct authoritative zone and DNSSEC procedure.
 
-### Outstanding Issues
+## 7. Release status
 
-- Resolve the visitor quiz-submission and unauthenticated public-document-download paths on the backend, then add bypass tests.
-- Establish PostgreSQL as the authoritative runtime store with safe migrations, health checks, and persistence tests.
-- Confirm the approved SRS and canonical Git repository before requirements traceability or cleanup.
-- Complete contact configuration, ratings/reviews, notifications, Q&A, analytics, full offline synchronization, and administrator workflows as scoped by the approved requirements.
-- Restore dependencies using the repository-approved package manager before running checks; clarify the `bun.lock` versus missing `package-lock.json` policy.
+**Deployment classification:** VPS application deployment completed for HTTP validation; public-domain production release remains pending.
 
-### Approval Required
+The project must not publish `https://tustudyhub.com` as a working live website until public DNS resolution and HTTPS have been independently verified. The GitHub repository is available for review now.
 
-- No approval was requested or required for this non-destructive audit. Destructive cleanup, data deletion, irreversible migrations, and production deployment remain approval-gated.
-
-## Later Stages
-
-Stages 2-9 have not started. Proceed in the order and dependencies defined by the supplied task after Stage 1 findings and the required source-of-truth documents are confirmed.
